@@ -1,7 +1,7 @@
 <template>
   <div id="register" class="text-center userForm">
     <form class="form-register" @submit.prevent="register">
-      <h1 class="h3 mb-3 font-weight-normal">TEGram</h1>
+      <h1 class="h3 mb-3 font-weight-normal title">TEGram</h1>
       <p>Create an Account</p>
       <div class="alert alert-danger" role="alert" v-if="registrationErrors">
         {{ registrationErrorMsg }}
