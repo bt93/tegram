@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div id="nav">
+    <div id="nav" v-if="$route.name !== 'login' || $route.name !== 'register'">
       <router-link v-bind:to="{ name: 'home' }">Home</router-link>
       <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
     </div>
@@ -22,13 +22,19 @@ body {
   border: 1px solid rgba(var(--b6a,219,219,219),1);
 }
 
-.text-center > form {
+.userForm > form {
   display: flex;
   flex-direction: column;
   padding: 10px 0;
 }
 
-.text-center > form > h1 {
+.userForm > form > h1 {
   font-family: 'Pacifico', cursive;;
+}
+
+@media screen and (min-width: 545px) {
+  .userForm {
+    margin: 0 220px 0 220px;
+  }
 }
 </style>
