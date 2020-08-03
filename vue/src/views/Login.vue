@@ -1,7 +1,8 @@
 <template>
-  <div id="login" class="text-center">
+  <div id="login" class="text-center userForm">
     <form class="form-signin" @submit.prevent="login">
-      <h1 class="h3 mb-3 font-weight-normal">TEGram</h1>
+      <h1 class="h3 mb-3 font-weight-normal title">TEGram</h1>
+      <p>Log-In</p>
       <div
         class="alert alert-danger"
         role="alert"

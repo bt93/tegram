@@ -1,12 +1,17 @@
 <template>
   <div class="home">
-    <h1>Home</h1>
-    <p>You must be authenticated to see this</p>
+    <h1 class="title">TEGram</h1>
+    <photo-container />
   </div>
 </template>
 
 <script>
+import PhotoContainer from '../components/PhotoContainer'
+
 export default {
-  name: "home"
+  name: "home",
+  components: {
+    PhotoContainer
+  }
 };
 </script>
