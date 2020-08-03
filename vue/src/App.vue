@@ -18,6 +18,7 @@
 
 body {
   font-family: 'Roboto', Arial, sans-serif;
+  background: rgba(250,250,250);
 }
 
 main {
@@ -28,7 +29,7 @@ main {
 .text-center {
   text-align: center;
   padding: 0 1vh 0 1vh;
-  border: 1px solid rgba(var(--b6a,219,219,219),1);
+  border: 1px solid rgba(250,250,250)
 }
 
 .userForm > form {
@@ -53,7 +54,7 @@ main {
 
 @media screen and (max-width: 900px) {
   main {
-        margin: 0px -25% 0 -25%;
+        margin: 0px -15% 0 -15%;
   }
 }
 </style>

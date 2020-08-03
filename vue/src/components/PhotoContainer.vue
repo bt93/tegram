@@ -32,22 +32,15 @@ export default {
 
 <style scoped>
 .photoContainer {
-    margin: 0 35vh 0 35vh;
+    margin: 0 15vh 0 15vh;
     background-color: rgba(var(--d87,255,255,255),1);
     border: 1px solid rgba(var(--b6a,219,219,219),1);
     text-align: left;
-}
-
-#userName {
-    
+    min-width: 300px;
 }
 
 img {
     width: 100%;
     padding: -1
-}
-
-.actions {
-    
 }
 </style>
