@@ -34,8 +34,16 @@ CREATE TABLE photos (
 
 --populate default data
 INSERT INTO users (username, password_hash, salt, user_role) VALUES ('user','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user');
+INSERT INTO users (username, password_hash, salt, user_role) VALUES ('Lace','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user');
+INSERT INTO users (username, password_hash, salt, user_role) VALUES ('Porter','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user');
+INSERT INTO users (username, password_hash, salt, user_role) VALUES ('Jason','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user');
+INSERT INTO users (username, password_hash, salt, user_role) VALUES ('Seth','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user');
 INSERT INTO users (username, password_hash, salt, user_role) VALUES ('admin','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','admin');
-INSERT INTO photos (file_path, user_id) VALUES ('C:\Users\Student\git\c-final-capstone-te-gram\dotnet\Capstone\UserPhotos\domestic-dog_thumb.jpg', 1);
+INSERT INTO photos (file_path, user_id) VALUES ('C:\Users\Student\git\c-final-capstone-te-gram\dotnet\Capstone\photos\dogs_1280p_0.jpg', 1);
+INSERT INTO photos (file_path, user_id) VALUES ('C:\Users\Student\git\c-final-capstone-te-gram\dotnet\Capstone\photos\3408.jpg', 2);
+INSERT INTO photos (file_path, user_id) VALUES ('C:\Users\Student\git\c-final-capstone-te-gram\dotnet\Capstone\photos\dog-tales-img.jpg', 3);
+INSERT INTO photos (file_path, user_id) VALUES ('C:\Users\Student\git\c-final-capstone-te-gram\dotnet\Capstone\photos\domestic-dog_thumb.jpg', 4);
+INSERT INTO photos (file_path, user_id) VALUES ('C:\Users\Student\git\c-final-capstone-te-gram\dotnet\Capstone\photos\pearl_16x9.jpg', 5);
 GO
 
 select * from photos

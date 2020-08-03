@@ -21,15 +21,7 @@ namespace Capstone.DAO
         {
             List<string> filePaths = new List<string> ();
             
-            // Hardcoded Values for Testing
-            filePaths.Add(@"C:\Users\Student\git\c-final-capstone-te-gram\dotnet\Capstone\photos\3408.jpg");
-            filePaths.Add(@"C:\Users\Student\git\c-final-capstone-te-gram\dotnet\Capstone\photos\dogs_1280p_0.jpg");
-            filePaths.Add(@"C:\Users\Student\git\c-final-capstone-te-gram\dotnet\Capstone\photos\dog-tales-img.jpg");
-            filePaths.Add(@"C:\Users\Student\git\c-final-capstone-te-gram\dotnet\Capstone\photos\pearl_16x9.jpg");
-            // End of Hardcoded Values for Testing
-
-
-/*            try
+            try
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
@@ -47,7 +39,7 @@ namespace Capstone.DAO
             catch (SqlException)
             {
                 throw;
-            }*/
+            }
 
             return filePaths;
         }
