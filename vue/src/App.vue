@@ -38,6 +38,11 @@ main {
   padding: 10px 0;
 }
 
+.userForm > form > input,
+.userForm > form > button {
+      margin: auto;
+}
+
 .title {
   font-family: 'Pacifico', cursive;;
 }

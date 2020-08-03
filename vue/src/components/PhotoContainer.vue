@@ -5,7 +5,7 @@
         <p id="userName">{UserName}</p>
     </header>
     <section>
-        <img src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/dog-puppy-on-garden-royalty-free-image-1586966191.jpg?crop=1.00xw:0.669xh;0,0.190xh&resize=1200:*" alt="">
+        <img v-bind:src="photo" alt="">
     </section>
     <section class="actions">
         <div>He is a good boy!</div>
@@ -25,14 +25,14 @@
 export default {
     name: 'photo-container',
     props: {
-        photo: Object
+        photo: String
     }
 }
 </script>
 
 <style scoped>
 .photoContainer {
-    margin: 0 15vh 0 15vh;
+    margin: 0 15vh 20px 15vh;
     background-color: rgba(var(--d87,255,255,255),1);
     border: 1px solid rgba(var(--b6a,219,219,219),1);
     text-align: left;
