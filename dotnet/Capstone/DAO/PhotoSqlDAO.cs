@@ -17,6 +17,8 @@ namespace Capstone.DAO
             connectionString = dbConnectionString;
         }
 
+
+
         public List<string> GetAllPhotos()
         {
             List<string> filePaths = new List<string> ();
@@ -28,6 +30,37 @@ namespace Capstone.DAO
                     conn.Open();
 
                     SqlCommand cmd = new SqlCommand("SELECT file_path FROM photos", conn); //Select every single file path stored in the photos table
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        filePaths.Add(Convert.ToString(reader["file_path"]));
+                    }
+                }
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+
+            return filePaths;
+        }
+
+
+
+
+        public List<string> GetUserPhotos(int user)
+        {
+            List<string> filePaths = new List<string>();
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand("SELECT file_path from photos JOIN users on users.user_id = photos.user_id where users.user_id = @userid", conn);
+                    cmd.Parameters.AddWithValue("@userid", user);
                     SqlDataReader reader = cmd.ExecuteReader();
 
                     while (reader.Read())

@@ -27,5 +27,17 @@ namespace Capstone.Controllers
             return Ok(paths);
 
         }
+
+        [HttpGet("{user}")]
+        public IActionResult GetUserPhotos(int user)
+        {
+            List<string> path = new List<string> {};
+            path = photoDAO.GetUserPhotos(user);
+            return Ok(path);
+        }
     }
+
+
+
+
 }
