@@ -7,6 +7,7 @@ C:\Users\Student\git\c-final-capstone-te-gram\dotnet\Capstone\bin\Debug\netcorea
 C:\Users\Student\git\c-final-capstone-te-gram\dotnet\Capstone\bin\Debug\netcoreapp2.2\Capstone.dll
 C:\Users\Student\git\c-final-capstone-te-gram\dotnet\Capstone\bin\Debug\netcoreapp2.2\Capstone.pdb
 C:\Users\Student\git\c-final-capstone-te-gram\dotnet\Capstone\obj\Debug\netcoreapp2.2\Capstone.csprojAssemblyReference.cache
+C:\Users\Student\git\c-final-capstone-te-gram\dotnet\Capstone\obj\Debug\netcoreapp2.2\Capstone.csproj.CoreCompileInputs.cache
 C:\Users\Student\git\c-final-capstone-te-gram\dotnet\Capstone\obj\Debug\netcoreapp2.2\Capstone.RazorAssemblyInfo.cache
 C:\Users\Student\git\c-final-capstone-te-gram\dotnet\Capstone\obj\Debug\netcoreapp2.2\Capstone.RazorAssemblyInfo.cs
 C:\Users\Student\git\c-final-capstone-te-gram\dotnet\Capstone\obj\Debug\netcoreapp2.2\Capstone.AssemblyInfoInputs.cache
