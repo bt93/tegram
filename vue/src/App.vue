@@ -4,6 +4,7 @@
       <router-link v-bind:to="{ name: 'home' }">Home</router-link> |
       <router-link v-bind:to="{ name: 'login' }" v-if="$store.state.token === ''">Login | </router-link>
       <router-link v-bind:to="{ name: 'register' }" v-if="$store.state.token === ''">Register</router-link>
+      <router-link v-bind:to="{ name: 'user' }" v-if="$store.state.token != ''"> | My Account</router-link>
       <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''"> | Logout</router-link>
     </nav>
     <main>
@@ -24,6 +25,10 @@ body {
 main {
   margin: 0 0% 0 0%;
   text-align: center;
+}
+
+a {
+  text-decoration: none;
 }
 
 .text-center {
