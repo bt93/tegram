@@ -9,11 +9,11 @@
     </section>
     <section class="actions">
         <div v-if="photo.caption">{{ photo.caption }}</div>
-        <span class="icon" @click="clickLike">
-            <i class="far fa-heart"></i>
+        <span class="icon">
+            <i  @click="clickLike" class="far fa-heart"></i>
             {{photo.likeCount}}
         </span>
-        <span @click="clickFavorite"><i class="icon far fa-bookmark"></i></span>
+        <span class="icon"><i @click="clickFavorite" class="far fa-bookmark"></i></span>
     </section>
     <section class="comments">
         <div>
@@ -60,5 +60,9 @@ img {
 .icon {
    font-size: 40px;
    padding-right: 20px;
+}
+
+.icon > i {
+    cursor: pointer;
 }
 </style> 
