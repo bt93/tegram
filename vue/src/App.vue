@@ -1,8 +1,12 @@
 <template>
   <div id="app">
+    <link rel="stylesheet" 
+        href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" 
+        integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" 
+        crossorigin="anonymous">
     <nav id="nav" v-if="$route.name !== 'login' || $route.name !== 'register'">
-      <router-link v-bind:to="{ name: 'home' }">Home</router-link> |
-      <router-link v-bind:to="{ name: 'login' }" v-if="$store.state.token === ''">Login | </router-link>
+      <router-link v-bind:to="{ name: 'home' }">Home</router-link> 
+      <router-link v-bind:to="{ name: 'login' }" v-if="$store.state.token === ''"> | Login | </router-link>
       <router-link v-bind:to="{ name: 'register' }" v-if="$store.state.token === ''">Register</router-link>
       <router-link v-bind:to="{ name: 'user', params: {id: $store.state.user.userId} }" v-if="$store.state.token != ''"> | My Account</router-link>
       <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''"> | Logout</router-link>
