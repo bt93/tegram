@@ -39,10 +39,11 @@ INSERT INTO users (username, password_hash, salt, user_role) VALUES ('Porter','J
 INSERT INTO users (username, password_hash, salt, user_role) VALUES ('Jason','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user');
 INSERT INTO users (username, password_hash, salt, user_role) VALUES ('Seth','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user');
 INSERT INTO users (username, password_hash, salt, user_role) VALUES ('admin','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','admin');
-INSERT INTO photos (file_path, user_id) VALUES ('C:\Users\Student\git\c-final-capstone-te-gram\dotnet\Capstone\photos\dogs_1280p_0.jpg', 1);
-INSERT INTO photos (file_path, user_id) VALUES ('C:\Users\Student\git\c-final-capstone-te-gram\dotnet\Capstone\photos\3408.jpg', 2);
-INSERT INTO photos (file_path, user_id) VALUES ('C:\Users\Student\git\c-final-capstone-te-gram\dotnet\Capstone\photos\dog-tales-img.jpg', 3);
-INSERT INTO photos (file_path, user_id) VALUES ('C:\Users\Student\git\c-final-capstone-te-gram\dotnet\Capstone\photos\domestic-dog_thumb.jpg', 4);
+INSERT INTO photos (file_path, user_id) VALUES ('/v1596548892/TE-Gram/pearl_16x9_tqkcko.jpg', 1);
+INSERT INTO photos (file_path, user_id) VALUES ('/v1596548892/TE-Gram/3408_xxawqk.jpg', 2);
+INSERT INTO photos (file_path, user_id) VALUES ('/v1596548892/TE-Gram/dogs_1280p_0_ofuwsx.jpg', 3);
+INSERT INTO photos (file_path, user_id) VALUES ('/v1596548895/TE-Gram/domestic-dog_thumb_yacyjk.jpg', 4);
+INSERT INTO photos (file_path, user_id) VALUES ('/v1596548892/TE-Gram/dogs_1280p_0_ofuwsx.jpg', 4);
 INSERT INTO photos (file_path, user_id) VALUES ('C:\Users\Student\git\c-final-capstone-te-gram\dotnet\Capstone\photos\pearl_16x9.jpg', 5);
 GO
 
