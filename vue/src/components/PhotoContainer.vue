@@ -49,6 +49,7 @@ export default {
     text-align: left;
     min-width: 300px;
     max-width: 600px;
+    border-radius: 15px;
 }
 
 img {

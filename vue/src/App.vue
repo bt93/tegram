@@ -95,7 +95,7 @@ footer {
 
 @media screen and (max-width: 900px) {
   main {
-        margin: 0px -15% 0 -15%;
+        margin: auto;
   }
 }
 </style>
