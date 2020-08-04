@@ -90,6 +90,22 @@ INSERT INTO like_photo (user_id, photo_id) VALUES (6, 13);
 INSERT INTO like_photo (user_id, photo_id) VALUES (4, 13);
 INSERT INTO like_photo (user_id, photo_id) VALUES (2, 13);
 INSERT INTO like_photo (user_id, photo_id) VALUES (1, 13);
+INSERT INTO like_photo (user_id, photo_id) VALUES (6, 12);
+INSERT INTO like_photo (user_id, photo_id) VALUES (6, 8);
+INSERT INTO like_photo (user_id, photo_id) VALUES (2, 3);
+INSERT INTO like_photo (user_id, photo_id) VALUES (2, 2);
+INSERT INTO like_photo (user_id, photo_id) VALUES (1, 2);
+INSERT INTO like_photo (user_id, photo_id) VALUES (1, 3);
+INSERT INTO like_photo (user_id, photo_id) VALUES (1, 10);
+INSERT INTO like_photo (user_id, photo_id) VALUES (1, 7);
+INSERT INTO like_photo (user_id, photo_id) VALUES (1, 14);
+INSERT INTO like_photo (user_id, photo_id) VALUES (1, 15);
+INSERT INTO like_photo (user_id, photo_id) VALUES (1, 12);
+INSERT INTO like_photo (user_id, photo_id) VALUES (1, 11);
+INSERT INTO like_photo (user_id, photo_id) VALUES (1, 21);
+INSERT INTO like_photo (user_id, photo_id) VALUES (1, 19);
+
+
 
 GO
 

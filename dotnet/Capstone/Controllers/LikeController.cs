@@ -19,6 +19,7 @@ namespace Capstone.Controllers
             likeDAO = _likeDAO;
         }
 
+
         [HttpPut("")]
         public IActionResult LikePhoto(Like like)
         {
