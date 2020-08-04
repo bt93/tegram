@@ -19,6 +19,17 @@ export default {
       photos: []
     }
   },
+  watch: {
+    '$route.params.id': function(userId) {
+      this.photos = [];
+      photoService.getPhotosByUser(userId)
+      .then(res => {
+        if (res.status === 200) {
+          res.data.forEach(p => this.photos.push(p));
+        }
+      });
+    }
+  },
   created() {
     photoService.getPhotosByUser(this.userId)
       .then(res => {
