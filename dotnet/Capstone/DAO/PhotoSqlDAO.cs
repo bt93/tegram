@@ -29,7 +29,7 @@ namespace Capstone.DAO
                 {
                     conn.Open();
 
-                    SqlCommand cmd = new SqlCommand("SELECT file_path, caption, users.user_id, users.username, (SELECT COUNT(*) from like_photo where like_photo.photo_id = photos.photo_id) as number_of_likes from photos JOIN users on users.user_id = photos.user_id ORDER BY photo_id desc", conn); //Select every single file path stored in the photos table
+                    SqlCommand cmd = new SqlCommand("SELECT file_path, caption, users.user_id, users.username, (SELECT COUNT(*) from like_photo where like_photo.photo_id = photos.photo_id) as number_of_likes from photos JOIN users on users.user_id = photos.user_id ORDER BY photo_id desc", conn); 
                     SqlDataReader reader = cmd.ExecuteReader();
 
                     while (reader.Read())

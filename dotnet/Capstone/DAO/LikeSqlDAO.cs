@@ -39,5 +39,36 @@ namespace Capstone.DAO
             }
 
         }
+
+
+        public bool GetLikeState(int userId, int photoId) //given a user id (the one logged in) and a photo id, check if an entry exists in the like table
+        {
+            bool likeState = false;
+            int value = 0;
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand("select COUNT(*) as number_of_likes from like_photo where photo_id = @photo_id and user_id = @user_id", conn);
+                    cmd.Parameters.AddWithValue("@user_id", userId);
+                    cmd.Parameters.AddWithValue("@photo_id", photoId);
+                    value = Convert.ToInt32(cmd.ExecuteScalar());
+
+                    if (value == 1)
+                    {
+                        likeState = true;                        
+                    }
+
+                }
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+
+            return likeState;
+        }
     }
 }
