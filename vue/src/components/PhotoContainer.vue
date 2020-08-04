@@ -5,7 +5,7 @@
         <p id="userName">{UserName}</p>
     </header>
     <section>
-        <img v-bind:src="photo" alt="">
+        <img v-bind:src="`https://res.cloudinary.com/tegram/image/upload${photo}`" alt="">
     </section>
     <section class="actions">
         <div>He is a good boy!</div>
