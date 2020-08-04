@@ -41,6 +41,8 @@ a {
   display: flex;
   flex-direction: column;
   padding: 10px 0;
+  background-color: rgba(255,255,255);
+  border: 1px solid rgba(219,219,219);
 }
 
 .userForm > form > input,

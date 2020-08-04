@@ -33,8 +33,8 @@ export default {
 <style scoped>
 .photoContainer {
     margin: 0 15vh 20px 15vh;
-    background-color: rgba(var(--d87,255,255,255),1);
-    border: 1px solid rgba(var(--b6a,219,219,219),1);
+    background-color: rgba(255,255,255);
+    border: 1px solid rgba(219,219,219);
     text-align: left;
     min-width: 300px;
 }
