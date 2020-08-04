@@ -40,6 +40,14 @@ CREATE TABLE comments (
 	CONSTRAINT PK_comment PRIMARY KEY (comment_id),
 	CONSTRAINT FK_photo FOREIGN KEY (photo_id) REFERENCES photos(photo_id)
 )
+CREATE TABLE like_photo (
+	like_photo_id int IDENTITY(1,1) NOT NULL,
+	user_id int NOT NULL,
+	photo_id int NOT NULL,
+	CONSTRAINT PK_like_photo PRIMARY KEY (like_photo_id),
+	CONSTRAINT FK_user_like FOREIGN KEY (user_id) REFERENCES users(user_id),
+	CONSTRAINT FK_photo_like FOREIGN KEY (photo_id) REFERENCES photos(photo_id)
+)
 
 --populate default data
 INSERT INTO users (username, password_hash, salt, user_role) VALUES ('user','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user');
@@ -78,6 +86,12 @@ INSERT INTO photos (file_path, user_id) VALUES ('/v1596549961/TE-Gram/TEworkplac
 INSERT INTO photos (file_path, user_id) VALUES ('/v1596549962/TE-Gram/TEworkplacePhoto04_akg4dc.jpg', 6);
 INSERT INTO photos (file_path, user_id, caption) VALUES ('/v1596549856/TE-Gram/TEworkplacePhoto10_txpocn.jpg', 6, 'Hello');
 
+INSERT INTO like_photo (user_id, photo_id) VALUES (6, 13);
+INSERT INTO like_photo (user_id, photo_id) VALUES (4, 13);
+INSERT INTO like_photo (user_id, photo_id) VALUES (2, 13);
+INSERT INTO like_photo (user_id, photo_id) VALUES (1, 13);
 
 GO
+
+
 
