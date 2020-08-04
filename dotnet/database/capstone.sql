@@ -27,9 +27,18 @@ CREATE TABLE photos (
 	photo_id int IDENTITY(1,1) NOT NULL,
 	file_path varchar(200) NOT NULL,
 	like_count int DEFAULT 0 NOT NULL,
+	caption varchar(200),
 	user_id int NOT NULL,
 	CONSTRAINT PK_photo PRIMARY KEY (photo_id),
 	CONSTRAINT FK_user FOREIGN KEY (user_id) REFERENCES users(user_id)
+)
+CREATE TABLE comments (
+	comment_id int IDENTITY(1,1) NOT NULL,
+	contents varchar(200),
+	like_count int DEFAULT 0 NOT NULL,
+	photo_id int NOT NULL,
+	CONSTRAINT PK_comment PRIMARY KEY (comment_id),
+	CONSTRAINT FK_photo FOREIGN KEY (photo_id) REFERENCES photos(photo_id)
 )
 
 --populate default data
@@ -67,8 +76,8 @@ INSERT INTO photos (file_path, user_id) VALUES ('/v1596549942/TE-Gram/TEworkplac
 INSERT INTO photos (file_path, user_id) VALUES ('/v1596549943/TE-Gram/TEworkplacePhoto07_h1oyoq.jpg', 6);
 INSERT INTO photos (file_path, user_id) VALUES ('/v1596549961/TE-Gram/TEworkplacePhoto12_hf6obs.jpg', 6);
 INSERT INTO photos (file_path, user_id) VALUES ('/v1596549962/TE-Gram/TEworkplacePhoto04_akg4dc.jpg', 6);
-INSERT INTO photos (file_path, user_id) VALUES ('/v1596549856/TE-Gram/TEworkplacePhoto10_txpocn.jpg', 6);
+INSERT INTO photos (file_path, user_id, caption) VALUES ('/v1596549856/TE-Gram/TEworkplacePhoto10_txpocn.jpg', 6, 'Hello');
+
 
 GO
 
-select * from photos
