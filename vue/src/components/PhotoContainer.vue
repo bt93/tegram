@@ -9,7 +9,10 @@
     </section>
     <section class="actions">
         <div v-if="photo.caption">{{ photo.caption }}</div>
-        <span @click="clickLike"><i class="icon far fa-heart"></i></span>
+        <span class="icon" @click="clickLike">
+            <i class="far fa-heart"></i>
+            {{photo.likeCount}}
+        </span>
         <span @click="clickFavorite"><i class="icon far fa-bookmark"></i></span>
     </section>
     <section class="comments">
