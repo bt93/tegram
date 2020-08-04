@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <h1 class="title">TEGram</h1>
-    <photo-container v-for="photo in photos" :key="photo" :photo="photo"/>
+    <photo-container v-for="photo in photos" :key="photo.userId" :photo="photo"/>
   </div>
 </template>
 

@@ -2,13 +2,13 @@
   <div class="photoContainer">
     <header>
         <!-- TODO Create a linke that will take you to the user page -->
-        <p id="userName">{UserName}</p>
+        <router-link :to="{name: 'user', params: {id: photo.userID}}"><p id="userName">{{photo.userName}}</p></router-link>
     </header>
     <section>
-        <img v-bind:src="`https://res.cloudinary.com/tegram/image/upload${photo}`" alt="">
+        <img v-bind:src="`https://res.cloudinary.com/tegram/image/upload${photo.filePath}`" alt="">
     </section>
     <section class="actions">
-        <div>He is a good boy!</div>
+        <div v-if="photo.caption">{{ photo.caption }}</div>
         <span>{Like}</span>
         <span>{Favorite}</span>
     </section>
@@ -25,7 +25,7 @@
 export default {
     name: 'photo-container',
     props: {
-        photo: String
+        photo: Object
     }
 }
 </script>
