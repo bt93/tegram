@@ -1,7 +1,6 @@
 <template>
   <div class="photoContainer">
     <header>
-        <!-- TODO Create a linke that will take you to the user page -->
         <router-link v-if="$route.name === 'home'" :to="{name: 'user', params: {id: photo.userID}}"><p id="userName">{{photo.userName}}</p></router-link>
         <p v-else id="userName">{{photo.userName}}</p>
     </header>

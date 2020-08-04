@@ -59,6 +59,11 @@ a {
   font-family: 'Pacifico', cursive;;
 }
 
+.error {
+  color: red;
+  text-emphasis: bold;
+}
+
 @media screen and (max-width: 730px) {
   main {
         margin: 0px 20% 0 20%;

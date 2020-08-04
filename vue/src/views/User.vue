@@ -1,22 +1,28 @@
 <template>
   <div id="user">
       <h1 class="title">TEGram</h1>
+      <img src="../images/loading.gif" alt="Loading" v-if="isLoading">
+      <error v-else-if="error"/>
       <photo-container v-for="photo in photos" :key="photo.userId" :photo="photo"/>
-      <img src="" alt="">
   </div>
 </template>
 
 <script>
 import PhotoContainer from '../components/PhotoContainer'
 import photoService from '../services/PhotoService'
+import Error from '../components/Error'
+
 export default {
   components: {
-    PhotoContainer
+    PhotoContainer,
+    Error
   },
   data() {
     return {
       userId: this.$route.params.id,
-      photos: []
+      photos: [],
+      error: false,
+      isLoading: true
     }
   },
   watch: {
@@ -25,7 +31,13 @@ export default {
       photoService.getPhotosByUser(userId)
       .then(res => {
         if (res.status === 200) {
+          this.isLoading = false;
           res.data.forEach(p => this.photos.push(p));
+        }
+      }).catch(err => {
+        if (err) {
+          this.isLoading = false;
+          this.error = true;
         }
       });
     }
@@ -34,7 +46,14 @@ export default {
     photoService.getPhotosByUser(this.userId)
       .then(res => {
         if (res.status === 200) {
+          this.isLoading = false;
           res.data.forEach(p => this.photos.push(p));
+        }
+      })
+      .catch(err => {
+        if (err) {
+          this.isLoading = false;
+          this.error = true;
         }
       });
   }  
