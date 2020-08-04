@@ -59,7 +59,7 @@ namespace Capstone.DAO
                 {
                     conn.Open();
 
-                    SqlCommand cmd = new SqlCommand("SELECT file_path from photos JOIN users on users.user_id = photos.user_id where users.user_id = @userid", conn);
+                    SqlCommand cmd = new SqlCommand("SELECT file_path from photos JOIN users on users.user_id = photos.user_id where users.user_id = @userid ORDER BY photo_id desc", conn);
                     cmd.Parameters.AddWithValue("@userid", user);
                     SqlDataReader reader = cmd.ExecuteReader();
 
