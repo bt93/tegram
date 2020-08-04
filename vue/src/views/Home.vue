@@ -1,22 +1,28 @@
 <template>
   <div class="home">
     <h1 class="title">TEGram</h1>
-    <photo-container v-for="photo in photos" :key="photo.userId" :photo="photo"/>
+    <img src="../images/loading.gif" alt="" v-if="isLoading">
+    <error v-else-if="error"/>
+    <photo-container v-else v-for="photo in photos" :key="photo.userId" :photo="photo"/>
   </div>
 </template>
 
 <script>
 import PhotoContainer from '../components/PhotoContainer'
 import photoService from '../services/PhotoService'
+import Error from '../components/Error'
 
 export default {
   name: "home",
   components: {
-    PhotoContainer
+    PhotoContainer,
+    Error
   },
   data() {
     return {
-      photos: []
+      photos: [],
+      error: false,
+      isLoading: true
     }
   },
   created() {
@@ -24,12 +30,14 @@ export default {
       .then(res => {
         if (res.status === 200) {
           res.data.forEach(p => this.photos.push(p));
+          this.isLoading = false;
         }
       })
       .catch(err => {
-        if (err.status === 400) {
+        if (err) {
           // TODO: Come back to fix this
-          console.log("something went wrong")
+          this.isLoading = false;
+          this.error = true;
         }
       })
   }
