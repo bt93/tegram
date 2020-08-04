@@ -15,7 +15,7 @@
       <h2  v-if="$store.state.token != ''">Welcome, {{$store.state.user.username}}!</h2>
       <router-view />
     </main>
-    <footer>&copy; Lace, Porter, Seth and Jason {{date.getFullYear()}}</footer>
+    <footer>&copy; TEGram {{date.getFullYear()}}</footer>
   </div>
 </template>
 
