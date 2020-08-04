@@ -19,9 +19,9 @@ namespace Capstone.DAO
 
 
 
-        public List<string> GetAllPhotos()
+        public List<Photo> GetAllPhotos()
         {
-            List<string> filePaths = new List<string> ();
+            List<Photo> Photos = new List<Photo>();
             
             try
             {
@@ -29,12 +29,21 @@ namespace Capstone.DAO
                 {
                     conn.Open();
 
-                    SqlCommand cmd = new SqlCommand("SELECT TOP 5 file_path FROM photos ORDER BY photo_id desc", conn); //Select every single file path stored in the photos table
+                    SqlCommand cmd = new SqlCommand("SELECT TOP 10 file_path, caption, users.user_id, users.username FROM photos JOIN users on users.user_id = photos.user_id ORDER BY photo_id desc", conn); //Select every single file path stored in the photos table
                     SqlDataReader reader = cmd.ExecuteReader();
 
                     while (reader.Read())
                     {
-                        filePaths.Add(Convert.ToString(reader["file_path"]));
+
+                        string path = (Convert.ToString(reader["file_path"]));
+                        string caption = (Convert.ToString(reader["caption"]));
+                        int id = (Convert.ToInt32(reader["user_id"]));
+                        string username = (Convert.ToString(reader["username"]));
+
+                        Photo thisPhoto = new Photo(path, caption, id, username);
+
+                        Photos.Add(thisPhoto);
+
                     }
                 }
             }
@@ -43,15 +52,13 @@ namespace Capstone.DAO
                 throw;
             }
 
-            return filePaths;
+            return Photos;
         }
 
-
-
-
-        public List<string> GetUserPhotos(int user)
+               
+        public List<Photo> GetUserPhotos(int user)
         {
-            List<string> filePaths = new List<string>();
+            List<Photo> Photos = new List<Photo>();
 
             try
             {
@@ -59,13 +66,22 @@ namespace Capstone.DAO
                 {
                     conn.Open();
 
-                    SqlCommand cmd = new SqlCommand("SELECT file_path from photos JOIN users on users.user_id = photos.user_id where users.user_id = @userid ORDER BY photo_id desc", conn);
+                    SqlCommand cmd = new SqlCommand("SELECT file_path, caption, users.user_id, users.username from photos JOIN users on users.user_id = photos.user_id where users.user_id = @userid ORDER BY photo_id desc", conn);
                     cmd.Parameters.AddWithValue("@userid", user);
                     SqlDataReader reader = cmd.ExecuteReader();
 
                     while (reader.Read())
                     {
-                        filePaths.Add(Convert.ToString(reader["file_path"]));
+
+                        string path = (Convert.ToString(reader["file_path"]));
+                        string caption = (Convert.ToString(reader["caption"]));
+                        int id = (Convert.ToInt32(reader["user_id"]));
+                        string username = (Convert.ToString(reader["username"]));
+
+                        Photo thisPhoto = new Photo(path, caption, id, username);
+
+                        Photos.Add(thisPhoto);
+
                     }
                 }
             }
@@ -74,7 +90,7 @@ namespace Capstone.DAO
                 throw;
             }
 
-            return filePaths;
+            return Photos;
         }
 
     }

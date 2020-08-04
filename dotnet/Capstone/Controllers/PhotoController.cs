@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Capstone.DAO;
+using Capstone.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -22,18 +23,17 @@ namespace Capstone.Controllers
         [HttpGet("")]
         public IActionResult GetPhotos()
         {
-            List<string> paths = new List<string>();
-            paths = photoDAO.GetAllPhotos();
-            return Ok(paths);
-
+            List<Photo> Photos = new List<Photo>();
+            Photos = photoDAO.GetAllPhotos();
+            return Ok(Photos);
         }
 
         [HttpGet("{user}")]
         public IActionResult GetUserPhotos(int user)
         {
-            List<string> path = new List<string> {};
-            path = photoDAO.GetUserPhotos(user);
-            return Ok(path);
+            List<Photo> Photos = new List<Photo>();
+            Photos = photoDAO.GetUserPhotos(user);
+            return Ok(Photos);
         }
     }
 
