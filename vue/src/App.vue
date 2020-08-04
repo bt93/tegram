@@ -12,6 +12,7 @@
       <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''"> | Logout</router-link>
     </nav>
     <main>
+      <h2  v-if="$store.state.token != ''">Welcome, {{$store.state.user.username}}!</h2>
       <router-view />
     </main>
     <footer>&copy; Lace, Porter, Seth and Jason {{date.getFullYear()}}</footer>
