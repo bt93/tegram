@@ -6,7 +6,7 @@
         <p v-else id="userName">{{photo.userName}}</p>
     </header>
     <section>
-        <img v-bind:src="`https://res.cloudinary.com/tegram/image/upload${photo.filePath}`" alt="">
+        <img v-bind:src="`https://res.cloudinary.com/tegram/image/upload/c_scale,w_2498/${photo.filePath}`" alt="">
     </section>
     <section class="actions">
         <div v-if="photo.caption">{{ photo.caption }}</div>
@@ -41,15 +41,17 @@ export default {
 
 <style scoped>
 .photoContainer {
-    margin: 0 15vh 20px 15vh;
+    margin: 0 auto 20px auto;
     background-color: rgba(255,255,255);
     border: 1px solid rgba(219,219,219);
     text-align: left;
     min-width: 300px;
+    max-width: 600px;
 }
 
 img {
     width: 100%;
+    max-height: 970px;
     padding: -1
 }
 

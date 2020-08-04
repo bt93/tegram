@@ -29,6 +29,7 @@ body {
 main {
   margin: 0 0% 0 0%;
   text-align: center;
+  padding: 0 135px;
 }
 
 a {
