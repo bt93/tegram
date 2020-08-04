@@ -29,7 +29,7 @@ namespace Capstone.DAO
                 {
                     conn.Open();
 
-                    SqlCommand cmd = new SqlCommand("SELECT file_path FROM photos", conn); //Select every single file path stored in the photos table
+                    SqlCommand cmd = new SqlCommand("SELECT TOP 5 file_path FROM photos ORDER BY photo_id desc", conn); //Select every single file path stored in the photos table
                     SqlDataReader reader = cmd.ExecuteReader();
 
                     while (reader.Read())
