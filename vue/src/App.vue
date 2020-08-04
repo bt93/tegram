@@ -14,9 +14,19 @@
     <main>
       <router-view />
     </main>
+    <footer>&copy; Lace, Porter, Seth and Jason {{date.getFullYear()}}</footer>
   </div>
 </template>
 
+<script>
+export default {
+  data() {
+    return {
+      date: new Date()
+    }
+  }
+}
+</script>
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:ital,wght@0,300;0,500;1,400&display=swap');
@@ -24,12 +34,15 @@
 body {
   font-family: 'Roboto', Arial, sans-serif;
   background: rgba(250,250,250);
+  position: relative;
+  min-height: 100vh;
 }
 
 main {
   margin: 0 0% 0 0%;
   text-align: center;
   padding: 0 135px;
+  padding-bottom: 2.5rem; 
 }
 
 a {
@@ -46,6 +59,8 @@ a {
   display: flex;
   flex-direction: column;
   padding: 10px 0;
+  max-width: 300px;
+  margin: 45px auto;
   background-color: rgba(255,255,255);
   border: 1px solid rgba(219,219,219);
 }
@@ -64,13 +79,16 @@ a {
   text-emphasis: bold;
 }
 
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 2.5rem;            /* Footer height */
+}
+
 @media screen and (max-width: 730px) {
   main {
-        margin: 0px 20% 0 20%;
-  }
-
-  .userForm {
-    margin: 0 220px 0 220px;
+      margin: auto;
   }
 }
 
