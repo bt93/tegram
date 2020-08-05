@@ -98,6 +98,30 @@ namespace Capstone.DAO
             return Photos;
         }
 
+
+        public void UploadPhoto(UploadPhoto uploadedPhoto)
+        {
+            //bool uploadSuccessful = false;
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand("INSERT INTO photos (file_path, user_id, caption) VALUES (@filePath, @userId, @caption);", conn);
+                    cmd.Parameters.AddWithValue("@filePath", uploadedPhoto.FilePath);
+                    cmd.Parameters.AddWithValue("@userId", uploadedPhoto.UserID);
+                    cmd.Parameters.AddWithValue("@caption", uploadedPhoto.Caption);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+        }
+
     }
 }
 
