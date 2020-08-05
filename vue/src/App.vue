@@ -25,12 +25,6 @@ export default {
     return {
       date: new Date()
     }
-  },
-  watch: {
-    '$route' (to) {
-      document.title = `TEGram | ${to.meta.title}`;
-    },
-    imediate: true
   }
 }
 </script>

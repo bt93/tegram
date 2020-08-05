@@ -52,6 +52,12 @@ export default {
     border-radius: 15px;
 }
 
+#userName,
+.actions,
+.comments {
+    padding-left: 10px;
+}
+
 img {
     width: 100%;
     max-height: 970px;
