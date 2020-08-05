@@ -86,10 +86,10 @@ namespace Capstone.Controllers
         }
         [HttpPut("register/setup")]
         [Authorize]
-        public IActionResult AddUserInfo([FromBody]string bio) 
+        public IActionResult AddUserInfo(User bio) 
 
         {
-            userDAO.AddUserInfo(UserId, bio);
+            userDAO.AddUserInfo(UserId, bio.Bio);
             return Ok();
         }
     }
