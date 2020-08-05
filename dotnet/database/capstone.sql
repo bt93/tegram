@@ -21,6 +21,8 @@ CREATE TABLE users (
 	password_hash varchar(200) NOT NULL,
 	salt varchar(200) NOT NULL,
 	user_role varchar(50) NOT NULL,
+	user_bio varchar (200) NOT NULL,
+	user_photo_path varchar (200),
 	CONSTRAINT PK_user PRIMARY KEY (user_id)
 )
 CREATE TABLE photos (
@@ -50,14 +52,16 @@ CREATE TABLE like_photo (
 )
 
 --populate default data
-INSERT INTO users (username, password_hash, salt, user_role) VALUES ('user','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user');
-INSERT INTO users (username, password_hash, salt, user_role) VALUES ('Lace','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user');
-INSERT INTO users (username, password_hash, salt, user_role) VALUES ('Porter','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user');
-INSERT INTO users (username, password_hash, salt, user_role) VALUES ('Jason','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user');
-INSERT INTO users (username, password_hash, salt, user_role) VALUES ('Seth','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user');
-INSERT INTO users (username, password_hash, salt, user_role) VALUES ('Val','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user');
 
-INSERT INTO users (username, password_hash, salt, user_role) VALUES ('admin','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','admin');
+
+INSERT INTO users (username, password_hash, salt, user_role, user_bio) VALUES ('user','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user', 'Im a person');
+INSERT INTO users (username, password_hash, salt, user_role, user_bio) VALUES ('Lace','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user', 'Im a guy');
+INSERT INTO users (username, password_hash, salt, user_role, user_bio) VALUES ('Porter','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user', 'Im a bro');
+INSERT INTO users (username, password_hash, salt, user_role, user_bio) VALUES ('Jason','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user', 'Im a lady');
+INSERT INTO users (username, password_hash, salt, user_role, user_bio) VALUES ('Seth','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user', 'Im a dude');
+INSERT INTO users (username, password_hash, salt, user_role, user_bio) VALUES ('Val','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user', 'Im a man');
+
+INSERT INTO users (username, password_hash, salt, user_role, user_bio) VALUES ('admin','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','admin', 'Im a pisces');
 INSERT INTO photos (file_path, user_id, caption) VALUES ('/v1596548892/TE-Gram/pearl_16x9_tqkcko.jpg', 1, 'There is literally no better creature on earth.');
 INSERT INTO photos (file_path, user_id, caption) VALUES ('/v1596548892/TE-Gram/3408_xxawqk.jpg', 2, 'Cats rule, dogs drool! ....wait.');
 INSERT INTO photos (file_path, user_id, caption) VALUES ('/v1596548892/TE-Gram/dogs_1280p_0_ofuwsx.jpg', 3, 'Dogs for the win!');
