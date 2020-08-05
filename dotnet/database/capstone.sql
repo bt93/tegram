@@ -64,27 +64,31 @@ INSERT INTO photos (file_path, user_id) VALUES ('/v1596548892/TE-Gram/dogs_1280p
 INSERT INTO photos (file_path, user_id) VALUES ('/v1596548895/TE-Gram/domestic-dog_thumb_yacyjk.jpg', 4);
 INSERT INTO photos (file_path, user_id) VALUES ('/v1596548892/TE-Gram/dogs_1280p_0_ofuwsx.jpg', 4);
 
-INSERT INTO photos (file_path, user_id) VALUES ('/v1596549728/TE-Gram/TEworkplacePhoto14_icubge.jpg', 6);
-INSERT INTO photos (file_path, user_id) VALUES ('/v1596549742/TE-Gram/TEworkplacePhoto16_m3kz0t.jpg', 6);
-INSERT INTO photos (file_path, user_id) VALUES ('/v1596549764/TE-Gram/TEworkplacePhoto17_hrf4de.jpg', 6);
-INSERT INTO photos (file_path, user_id) VALUES ('/v1596549781/TE-Gram/TEworkplacePhoto15_k56p8v.jpg', 6);
-INSERT INTO photos (file_path, user_id) VALUES ('/v1596549791/TE-Gram/TEworkplacePhoto18_t5weuz.jpg', 6);
-INSERT INTO photos (file_path, user_id) VALUES ('/v1596549798/TE-Gram/TEworkplacePhoto20_mopxyq.jpg', 6);
-INSERT INTO photos (file_path, user_id) VALUES ('/v1596549813/TE-Gram/TEworkplacePhoto08_a5mujf.jpg', 6);
-INSERT INTO photos (file_path, user_id) VALUES ('/v1596549813/TE-Gram/TEworkplacePhoto19_msw98r.png', 6);
-INSERT INTO photos (file_path, user_id) VALUES ('/v1596549818/TE-Gram/TEworkplacePhoto01_ijjkfl.jpg', 6);
-INSERT INTO photos (file_path, user_id) VALUES ('/v1596549843/TE-Gram/TEworkplacePhoto21_l4cehq.jpg', 6);
-INSERT INTO photos (file_path, user_id) VALUES ('/v1596549847/TE-Gram/TEworkplacePhoto02_tvoubo.jpg', 6);
-INSERT INTO photos (file_path, user_id) VALUES ('/v1596549853/TE-Gram/TEworkplacePhoto09_gg56dq.jpg', 6);
-INSERT INTO photos (file_path, user_id) VALUES ('/v1596549856/TE-Gram/TEworkplacePhoto10_txpocn.jpg', 6);
-INSERT INTO photos (file_path, user_id) VALUES ('/v1596549876/TE-Gram/TEworkplacePhoto13_kjb9az.jpg', 6);
-INSERT INTO photos (file_path, user_id) VALUES ('/v1596549876/TE-Gram/TEworkplacePhoto03_jxhqpd.jpg', 6);
-INSERT INTO photos (file_path, user_id) VALUES ('/v1596549918/TE-Gram/TEworkplacePhoto06_prwc8s.jpg', 6);
-INSERT INTO photos (file_path, user_id) VALUES ('/v1596549942/TE-Gram/TEworkplacePhoto05_i6qofg.jpg', 6);
-INSERT INTO photos (file_path, user_id) VALUES ('/v1596549943/TE-Gram/TEworkplacePhoto07_h1oyoq.jpg', 6);
-INSERT INTO photos (file_path, user_id) VALUES ('/v1596549961/TE-Gram/TEworkplacePhoto12_hf6obs.jpg', 6);
-INSERT INTO photos (file_path, user_id) VALUES ('/v1596549962/TE-Gram/TEworkplacePhoto04_akg4dc.jpg', 6);
-INSERT INTO photos (file_path, user_id, caption) VALUES ('/v1596549856/TE-Gram/TEworkplacePhoto10_txpocn.jpg', 6, 'Hello');
+
+INSERT INTO photos (file_path, user_id, caption) VALUES ('/v1596549818/TE-Gram/TEworkplacePhoto01_ijjkfl.jpg', 6, 'Look at him shred!');
+INSERT INTO photos (file_path, user_id, caption) VALUES ('/v1596549847/TE-Gram/TEworkplacePhoto02_tvoubo.jpg', 6, 'Ohhh, a Blue Snowball microphone!');
+INSERT INTO photos (file_path, user_id, caption) VALUES ('/v1596549876/TE-Gram/TEworkplacePhoto03_jxhqpd.jpg', 6, 'Hi, kitty cat!');
+INSERT INTO photos (file_path, user_id, caption) VALUES ('/v1596549962/TE-Gram/TEworkplacePhoto04_akg4dc.jpg', 6, 'Nominated for "Best Lit Workspace in TE"!');
+INSERT INTO photos (file_path, user_id, caption) VALUES ('/v1596549942/TE-Gram/TEworkplacePhoto05_i6qofg.jpg', 6, 'Solid funko-pop. Fallout for the win!');
+INSERT INTO photos (file_path, user_id, caption) VALUES ('/v1596549918/TE-Gram/TEworkplacePhoto06_prwc8s.jpg', 6, 'The look of a man trying to get the darn camera to work.');
+INSERT INTO photos (file_path, user_id, caption) VALUES ('/v1596549943/TE-Gram/TEworkplacePhoto07_h1oyoq.jpg', 6, 'Sigh. I should have moved the trashcan.');
+INSERT INTO photos (file_path, user_id, caption) VALUES ('/v1596549813/TE-Gram/TEworkplacePhoto08_a5mujf.jpg', 6, 'Two more monitors and he would be able to read the Matrix.');
+INSERT INTO photos (file_path, user_id, caption) VALUES ('/v1596549853/TE-Gram/TEworkplacePhoto09_gg56dq.jpg', 6, 'Is that... Yep. A dedicated cat drawer.');
+INSERT INTO photos (file_path, user_id, caption) VALUES ('/v1596549856/TE-Gram/TEworkplacePhoto10_txpocn.jpg', 6, 'GO BROWNIES!!!');
+INSERT INTO photos (file_path, user_id, caption) VALUES ('/v1596549880/TE-Gram/TEworkplacePhoto11_t00vnj.jpg', 6, 'The importance of staying hydrated can not be overstated.');
+INSERT INTO photos (file_path, user_id, caption) VALUES ('/v1596549961/TE-Gram/TEworkplacePhoto12_hf6obs.jpg', 6, 'Look at that monitor mount!');
+INSERT INTO photos (file_path, user_id, caption) VALUES ('/v1596549876/TE-Gram/TEworkplacePhoto13_kjb9az.jpg', 6, 'Go, Bobcats!');
+INSERT INTO photos (file_path, user_id, caption) VALUES ('/v1596549728/TE-Gram/TEworkplacePhoto14_icubge.jpg', 6, 'That looks like a heavy duty desktop in the background!');
+INSERT INTO photos (file_path, user_id, caption) VALUES ('/v1596549781/TE-Gram/TEworkplacePhoto15_k56p8v.jpg', 6, 'Ready to develop software and chew bubblegum. And I am all out of gum.');
+INSERT INTO photos (file_path, user_id, caption) VALUES ('/v1596549742/TE-Gram/TEworkplacePhoto16_m3kz0t.jpg', 6, 'Nobody "Dad-jokes" as well as Ed.');
+INSERT INTO photos (file_path, user_id, caption) VALUES ('/v1596549764/TE-Gram/TEworkplacePhoto17_hrf4de.jpg', 6, 'JOELO! Nice penguin.');
+INSERT INTO photos (file_path, user_id, caption) VALUES ('/v1596549791/TE-Gram/TEworkplacePhoto18_t5weuz.jpg', 6, 'OH! IO!');
+INSERT INTO photos (file_path, user_id, caption) VALUES ('/v1596549813/TE-Gram/TEworkplacePhoto19_msw98r.png', 6, 'It can be difficult remote learning from the jungle, but I make it work.');
+INSERT INTO photos (file_path, user_id, caption) VALUES ('/v1596549798/TE-Gram/TEworkplacePhoto20_mopxyq.jpg', 6, 'Perspective shift can be an absolutely terrifying thing.');
+INSERT INTO photos (file_path, user_id, caption) VALUES ('/v1596549843/TE-Gram/TEworkplacePhoto21_l4cehq.jpg', 6, 'Winner of the "most screens" award. Thanks, Mike!');
+
+
+
 
 INSERT INTO like_photo (user_id, photo_id) VALUES (6, 13);
 INSERT INTO like_photo (user_id, photo_id) VALUES (4, 13);
