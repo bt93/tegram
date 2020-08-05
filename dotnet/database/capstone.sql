@@ -21,7 +21,7 @@ CREATE TABLE users (
 	password_hash varchar(200) NOT NULL,
 	salt varchar(200) NOT NULL,
 	user_role varchar(50) NOT NULL,
-	user_bio varchar (200) NOT NULL,
+	user_bio varchar (200),
 	user_photo_path varchar (200),
 	CONSTRAINT PK_user PRIMARY KEY (user_id)
 )
@@ -112,6 +112,8 @@ INSERT INTO like_photo (user_id, photo_id) VALUES (1, 12);
 INSERT INTO like_photo (user_id, photo_id) VALUES (1, 11);
 INSERT INTO like_photo (user_id, photo_id) VALUES (1, 21);
 INSERT INTO like_photo (user_id, photo_id) VALUES (1, 19);
+
+
 
 
 
