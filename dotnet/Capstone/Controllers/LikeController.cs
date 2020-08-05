@@ -61,8 +61,8 @@ namespace Capstone.Controllers
         public IActionResult GetLikeState(int photoId) //user id and photo id
 
         {
-            likeDAO.LikePhoto(UserId, photoId);
-            return Ok();
+            bool isLiked = likeDAO.GetLikeState(UserId, photoId);
+            return Ok(isLiked);
         }
 
         // make the like exist put post

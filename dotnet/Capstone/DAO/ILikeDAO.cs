@@ -8,5 +8,7 @@ namespace Capstone.DAO
     public interface ILikeDAO
     {
        void LikePhoto(int userId, int photoId);
+
+       bool GetLikeState(int userId, int photoId);
     }
 }

@@ -41,6 +41,9 @@ namespace Capstone.DAO
         }
 
 
+        // get the count of number of likes "select COUNT(*) as number_of_likes from like_photo where photo_id = @photo_id and user_id = @user_id"
+
+
         public bool GetLikeState(int userId, int photoId) //given a user id (the one logged in) and a photo id, check if an entry exists in the like table
         {
             bool likeState = false;
