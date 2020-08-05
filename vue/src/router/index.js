@@ -5,6 +5,7 @@ import Login from '../views/Login.vue'
 import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import User from '../views/User'
+import Settings from '../views/Settings'
 import store from '../store/index'
 
 Vue.use(Router)
@@ -65,6 +66,15 @@ const router = new Router({
       meta: {
         requiresAuth: false,
         title: 'User'
+      }
+    },
+    {
+      path: "/settings",
+      name: "settings",
+      component: Settings,
+      meta: {
+        requiresAuth: true,
+        title: 'User Settings'
       }
     },
   ]
