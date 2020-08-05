@@ -12,15 +12,19 @@ namespace Capstone.Models
         public int UserID { get; set; }
         public string UserName { get; set; }
         public int LikeCount { get; set; }
+        public int PhotoId { get; set; }
 
-        public Photo(string passedPath, string passedCaption, int passedUserID, string passedUserName, int passedNumberOfLikes)
+
+        public Photo(string passedPath, string passedCaption, int passedUserID, string passedUserName, int passedNumberOfLikes, int passedPhotoId)
         {
             FilePath = passedPath;
             Caption = passedCaption;
             UserID = passedUserID;
             UserName = passedUserName;
             LikeCount = passedNumberOfLikes;
-        } 
+            PhotoId = passedPhotoId;
+
+        }
     }
 
 }
