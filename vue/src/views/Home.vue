@@ -1,7 +1,9 @@
 <template>
   <div class="home">
-    <h1 class="title">TEGram</h1>
-    <img src="../images/loading.gif" alt="" v-if="isLoading">
+    <div class="header">
+      <span><img src="..\images\TEGram_Smaller_Rounded.png" class="small-logo" alt=""></span><h1 class="title">TEGram</h1>
+    </div>
+    <img src="../images/loading.gif" alt="TEGram" v-if="isLoading">
     <error v-else-if="error"/>
     <photo-container v-else v-for="photo in photos" :key="photo.photoId" :photo="photo"/>
   </div>

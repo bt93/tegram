@@ -50,6 +50,11 @@ a {
   text-decoration: none;
 }
 
+.header {
+  display: flex;
+  justify-content: center;
+}
+
 .text-center {
   text-align: center;
   padding: 0 1vh 0 1vh;
@@ -71,6 +76,10 @@ a {
       margin: auto;
 }
 
+.small-logo {
+  max-width: 80px;
+  padding-right: 20px;
+}
 .title {
   font-family: 'Pacifico', cursive;;
 }
