@@ -41,8 +41,7 @@ namespace Capstone.DAO
                         string username = (Convert.ToString(reader["username"]));
                         int numberOfLikes = (Convert.ToInt32(reader["number_of_likes"]));
                         int photoId = (Convert.ToInt32(reader["photo_id"]));
-
-
+                        
                         Photo thisPhoto = new Photo(path, caption, id, username, numberOfLikes, photoId);
 
                         Photos.Add(thisPhoto);

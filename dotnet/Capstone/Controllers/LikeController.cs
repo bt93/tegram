@@ -48,13 +48,16 @@ namespace Capstone.Controllers
         }
 
 
-        [HttpPut("")]
-        public IActionResult LikePhoto(Like like)
+        [HttpPut("{photoId}")]
+        public IActionResult LikePhoto(int photoId)
         {
 
-            likeDAO.LikePhoto(like.UserId, like.PhotoId);
+            likeDAO.LikePhoto(UserId, photoId);
             return Ok();
         }
+
+
+
 
         [HttpGet("{photoId}")]
         [Authorize]
