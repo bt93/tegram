@@ -29,6 +29,8 @@
 </template>
 
 <script>
+import photoService from '../services/PhotoService'
+
 export default {
     name: 'photo-container',
     data() {
@@ -54,6 +56,14 @@ export default {
             } else if (!this.favorited && this.$store.state.token != '') {
                 this.favorited = true;
             }
+        }
+    },
+    created() {
+        if (this.$store.state.token !== '') {
+            photoService.getLikeState(this.photo.photoId)
+                .then(res => {
+                    this.liked = res.data;
+                });
         }
     }
 }
