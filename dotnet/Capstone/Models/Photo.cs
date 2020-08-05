@@ -25,6 +25,24 @@ namespace Capstone.Models
             PhotoId = passedPhotoId;
 
         }
+
     }
 
+    public class UploadPhoto
+    {
+
+        public string FilePath { get; set; }
+        public string Caption { get; set; }
+        public int UserID { get; set; }
+
+
+        public UploadPhoto(string passedPath, string passedCaption, int passedUserID) //For use when we are uploading a photo for the first time
+        {           
+            FilePath = passedPath;
+            Caption = passedCaption;
+            UserID = passedUserID;
+        }
+    }
 }
+
+
