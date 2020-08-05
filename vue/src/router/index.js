@@ -27,7 +27,8 @@ const router = new Router({
       name: 'home',
       component: Home,
       meta: {
-        requiresAuth: false
+        requiresAuth: false,
+        title: 'Home'
       }
     },
     {
@@ -35,7 +36,8 @@ const router = new Router({
       name: "login",
       component: Login,
       meta: {
-        requiresAuth: false
+        requiresAuth: false,
+        title: 'Login'
       }
     },
     {
@@ -43,7 +45,8 @@ const router = new Router({
       name: "logout",
       component: Logout,
       meta: {
-        requiresAuth: false
+        requiresAuth: false,
+        title: 'Logout'
       }
     },
     {
@@ -51,7 +54,8 @@ const router = new Router({
       name: "register",
       component: Register,
       meta: {
-        requiresAuth: false
+        requiresAuth: false,
+        title: 'Register'
       }
     },
     {
@@ -59,7 +63,8 @@ const router = new Router({
       name: "user",
       component: User,
       meta: {
-        requiresAuth: false
+        requiresAuth: false,
+        title: 'User'
       }
     },
   ]
@@ -68,6 +73,10 @@ const router = new Router({
 router.beforeEach((to, from, next) => {
   // Determine if the route requires Authentication
   const requiresAuth = to.matched.some(x => x.meta.requiresAuth);
+
+  if (to.meta && to.meta.title) {
+    document.title = to.meta.title + ' | TEGram';
+  }
 
   // If it does and they are not logged in, send the user to "/login"
   if (requiresAuth && store.state.token === '') {
