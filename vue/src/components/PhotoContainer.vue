@@ -29,6 +29,8 @@
 </template>
 
 <script>
+import photoService from '../services/PhotoService'
+
 export default {
     name: 'photo-container',
     data() {
@@ -42,18 +44,26 @@ export default {
     },
     methods: {
         clickLike() {
-            if (this.liked) {
+            if (this.liked && this.$store.state.token != '') {
                 this.liked = false;
-            } else {
+            } else if (!this.liked && this.$store.state.token != '') {
                 this.liked = true;
             }
         },
         clickFavorite() {
-            if (this.favorited) {
+            if (this.favorited && this.$store.state.token != '') {
                 this.favorited = false;
-            } else {
+            } else if (!this.favorited && this.$store.state.token != '') {
                 this.favorited = true;
             }
+        }
+    },
+    created() {
+        if (this.$store.state.token !== '') {
+            photoService.getLikeState(this.photo.photoId)
+                .then(res => {
+                    this.liked = res.data;
+                });
         }
     }
 }

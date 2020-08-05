@@ -3,7 +3,7 @@
     <h1 class="title">TEGram</h1>
     <img src="../images/loading.gif" alt="" v-if="isLoading">
     <error v-else-if="error"/>
-    <photo-container v-else v-for="photo in photos" :key="photo.userId" :photo="photo"/>
+    <photo-container v-else v-for="photo in photos" :key="photo.photoId" :photo="photo"/>
   </div>
 </template>
 

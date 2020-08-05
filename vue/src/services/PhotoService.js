@@ -7,5 +7,9 @@ export default {
 
     getPhotosByUser(id) {
         return axios.get(`/photo/${id}`);
+    },
+
+    getLikeState(id) {
+        return axios.get(`/like/${id}`);
     }
 }
