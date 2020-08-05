@@ -2,6 +2,9 @@
 using Capstone.DAO;
 using Capstone.Models;
 using Capstone.Security;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
+using System.Linq;
 
 namespace Capstone.Controllers
 {
@@ -12,6 +15,19 @@ namespace Capstone.Controllers
         private readonly ITokenGenerator tokenGenerator;
         private readonly IPasswordHasher passwordHasher;
         private readonly IUserDAO userDAO;
+        protected int UserId
+        {
+            get
+            {
+                int userId = 0;
+                Claim subjectClaim = User?.Claims?.Where(cl => cl.Type == "sub").FirstOrDefault();
+                if (subjectClaim != null)
+                {
+                    int.TryParse(subjectClaim.Value, out userId);
+                }
+                return userId;
+            }
+        }
 
         public LoginController(ITokenGenerator _tokenGenerator, IPasswordHasher _passwordHasher, IUserDAO _userDAO)
         {
@@ -67,6 +83,14 @@ namespace Capstone.Controllers
             }
 
             return result;
+        }
+        [HttpPut("register/setup")]
+        [Authorize]
+        public IActionResult AddUserInfo(User bio) 
+
+        {
+            userDAO.AddUserInfo(UserId, bio.Bio);
+            return Ok();
         }
     }
 }

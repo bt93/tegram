@@ -71,6 +71,27 @@ namespace Capstone.DAO
 
             return GetUser(username);
         }
+        public void AddUserInfo(int userId, string bio)
+        {
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand("UPDATE users SET user_bio = @passed_bio WHERE user_id = @user_id", conn);
+                    cmd.Parameters.AddWithValue("@user_id", userId);
+                    cmd.Parameters.AddWithValue("@passed_bio", bio);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+
+        }
 
         private User GetUserFromReader(SqlDataReader reader)
         {
