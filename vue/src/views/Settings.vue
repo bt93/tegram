@@ -9,7 +9,7 @@
           </div>
           <div>
               <label for="pfp">Profile Picture: </label>
-              <input type="file" id="myFile" name="filename">
+              <button @click="uploadPhoto">Upload A Photo</button>
           </div>
           <input type="submit">
       </form>
@@ -21,6 +21,9 @@ export default {
     methods: {
         submitForm() {
             console.log('Click')
+        },
+        uploadPhoto() {
+            this.$store.state.widget.open();
         }
     }
 }
