@@ -10,10 +10,14 @@
     <section class="actions">
         <div v-if="photo.caption">{{ photo.caption }}</div>
         <span class="icon">
-            <i  @click="clickLike" class="far fa-heart"></i>
+            <i  @click="clickLike()" v-if="!liked" class="heart far fa-heart"></i>
+            <i  @click="clickLike()" v-if="liked" class="heart fas fa-heart"></i>
             {{photo.likeCount}}
         </span>
-        <span class="icon"><i @click="clickFavorite" class="far fa-bookmark"></i></span>
+        <span class="icon">
+            <i @click="clickFavorite" v-if="!favorited" class="far fa-bookmark"></i>
+            <i @click="clickFavorite" v-if="favorited" class="fas fa-bookmark"></i>
+        </span>
     </section>
     <section class="comments">
         <div>
@@ -27,15 +31,29 @@
 <script>
 export default {
     name: 'photo-container',
+    data() {
+        return {
+            liked: false,
+            favorited: false,
+        }
+    },
     props: {
         photo: Object
     },
     methods: {
-        clickLike(e) {
-            console.log(e);
+        clickLike() {
+            if (this.liked) {
+                this.liked = false;
+            } else {
+                this.liked = true;
+            }
         },
-        clickFavorite(e) {
-            console.log(e);
+        clickFavorite() {
+            if (this.favorited) {
+                this.favorited = false;
+            } else {
+                this.favorited = true;
+            }
         }
     }
 }
@@ -50,6 +68,10 @@ export default {
     min-width: 300px;
     max-width: 600px;
     border-radius: 15px;
+}
+
+.heart {
+    color: red;
 }
 
 #userName,
