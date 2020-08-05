@@ -20,7 +20,7 @@ export default new Vuex.Store({
   state: {
     token: currentToken || '',
     user: currentUser || {},
-    cloudinaryUrl: process.env.CLOUDINARY_API
+    cloudinaryUrl: process.env.VUE_APP_CLOUDINARY_API
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {

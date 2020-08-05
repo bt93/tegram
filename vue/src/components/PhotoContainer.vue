@@ -5,7 +5,7 @@
         <p v-else id="userName">{{photo.userName}}</p>
     </header>
     <section>
-        <img v-bind:src="`https://res.cloudinary.com/tegram/image/upload/c_scale,w_2498/${photo.filePath}`" alt="">
+        <img v-bind:src="`${$store.state.cloudinaryUrl}${photo.filePath}`" alt="">
     </section>
     <section class="actions">
         <div v-if="photo.caption">{{ photo.caption }}</div>

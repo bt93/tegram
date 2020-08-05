@@ -27,7 +27,8 @@ const router = new Router({
       name: 'home',
       component: Home,
       meta: {
-        requiresAuth: false
+        requiresAuth: false,
+        title: 'Home'
       }
     },
     {
@@ -35,7 +36,8 @@ const router = new Router({
       name: "login",
       component: Login,
       meta: {
-        requiresAuth: false
+        requiresAuth: false,
+        title: 'Login'
       }
     },
     {
@@ -43,7 +45,8 @@ const router = new Router({
       name: "logout",
       component: Logout,
       meta: {
-        requiresAuth: false
+        requiresAuth: false,
+        title: 'Logout'
       }
     },
     {
@@ -51,7 +54,8 @@ const router = new Router({
       name: "register",
       component: Register,
       meta: {
-        requiresAuth: false
+        requiresAuth: false,
+        title: 'Register'
       }
     },
     {
@@ -59,7 +63,8 @@ const router = new Router({
       name: "user",
       component: User,
       meta: {
-        requiresAuth: false
+        requiresAuth: false,
+        // title: $route.
       }
     },
   ]
