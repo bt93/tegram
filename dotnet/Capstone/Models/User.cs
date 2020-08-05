@@ -8,6 +8,7 @@
         public string Salt { get; set; }
         public string Role { get; set; }
         public string Bio { get; set; }
+        public string UserPhotoPath { get; set; }
     }
 
     /// <summary>

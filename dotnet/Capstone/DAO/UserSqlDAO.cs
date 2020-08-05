@@ -71,7 +71,7 @@ namespace Capstone.DAO
 
             return GetUser(username);
         }
-        public void AddUserInfo(int userId, string bio)
+        public void AddUserInfo(int userId, string bio, string photoPath)
         {
 
             try
@@ -80,9 +80,10 @@ namespace Capstone.DAO
                 {
                     conn.Open();
 
-                    SqlCommand cmd = new SqlCommand("UPDATE users SET user_bio = @passed_bio WHERE user_id = @user_id", conn);
+                    SqlCommand cmd = new SqlCommand("UPDATE users SET user_bio = @passed_bio, user_photo_path = @passed_path WHERE user_id = @user_id", conn);
                     cmd.Parameters.AddWithValue("@user_id", userId);
                     cmd.Parameters.AddWithValue("@passed_bio", bio);
+                    cmd.Parameters.AddWithValue("@passed_path ", photoPath);
                     cmd.ExecuteNonQuery();
                 }
             }
