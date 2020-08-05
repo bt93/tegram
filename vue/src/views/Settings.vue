@@ -10,6 +10,7 @@
           <div>
               <label for="pfp">Profile Picture: </label>
               <button @click="uploadPhoto">Upload A Photo</button>
+              <img v-if="url" :src="`${$store.state.cloudinaryUrl}${url}`" alt="">
           </div>
           <input type="submit">
       </form>
@@ -18,12 +19,29 @@
 
 <script>
 export default {
+    data() {
+        return {
+            url: ''
+        }
+    },
     methods: {
         submitForm() {
             console.log('Click')
         },
         uploadPhoto() {
-            this.$store.state.widget.open();
+            const myWidget = window.cloudinary.createUploadWidget({
+                cloudName: 'tegram', 
+                uploadPreset: 'lcj744qb'}, (error, result) => { 
+                    if (!error && result && result.event === "success") { 
+                    console.log('Done! Here is the image info: ', result.info);
+                    this.url = result.info.path;
+                    } else {
+                    console.log(error);
+                    }
+                }
+                )
+            myWidget.open();
+            console.log(this.$store.state.widget)
         }
     }
 }

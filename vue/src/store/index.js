@@ -12,16 +12,7 @@ Vue.use(Vuex)
 const currentToken = localStorage.getItem('token')
 const currentUser = JSON.parse(localStorage.getItem('user'));
 
-const myWidget = window.cloudinary.createUploadWidget({
-  cloudName: 'tegram', 
-  uploadPreset: 'lcj744qb'}, (error, result) => { 
-    if (!error && result && result.event === "success") { 
-      console.log('Done! Here is the image info: ', result.info); 
-    } else {
-      console.log(error);
-    }
-  }
-)
+
 
 if(currentToken != null) {
   axios.defaults.headers.common['Authorization'] = `Bearer ${currentToken}`;
@@ -32,7 +23,7 @@ export default new Vuex.Store({
     token: currentToken || '',
     user: currentUser || {},
     cloudinaryUrl: process.env.VUE_APP_CLOUDINARY_API,
-    widget: myWidget
+    uploadedFilePath: ''
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
