@@ -5,7 +5,7 @@
       <form @submit.prevent="submitForm">
           <div>
               <label for="bio">Biography: </label>
-              <textarea name="bio" id="bio" cols="30" rows="10"></textarea>
+              <textarea v-bind="bio" name="bio" id="bio" cols="30" rows="10"></textarea>
           </div>
           <div>
               <label for="pfp">Profile Picture: </label>
@@ -18,15 +18,23 @@
 </template>
 
 <script>
+import authService from '../services/AuthService'
+
 export default {
     data() {
         return {
-            url: ''
+            url: '',
+            bio: ''
         }
     },
     methods: {
         submitForm() {
-            console.log('Click')
+            authService.addUserInfo(this.bio, this.url)
+                        .then(res => {
+                            if (this.res) {
+                                console.log(res);
+                            }
+                        })
         },
         uploadPhoto() {
             const myWidget = window.cloudinary.createUploadWidget({
