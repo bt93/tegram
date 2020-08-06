@@ -19,12 +19,6 @@
             <i @click="clickFavorite" v-if="favorited" class="fas fa-bookmark"></i>
         </span>
     </section>
-    <section class="comments">
-        <div>
-            <p class="comment"> {UserName}
-                <span>What a good boy!</span></p>
-        </div>
-    </section>
   </div>
 </template>
 

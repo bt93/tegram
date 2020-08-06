@@ -6,10 +6,7 @@
 
 <script>
 export default {
-    name: 'photo-detail',
-    mounted() {
-        this.$modal.show('detail')
-    }
+    name: 'photo-detail'
 }
 </script>
 

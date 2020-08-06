@@ -6,6 +6,7 @@
     <img src="../images/loading.gif" alt="TEGram" v-if="isLoading">
     <error v-else-if="error"/>
     <photo-container v-else v-for="photo in photos" :key="photo.photoId" :photo="photo"/>
+    <photo-detail />
   </div>
 </template>
 
@@ -19,6 +20,7 @@ export default {
   name: "home",
   components: {
     PhotoContainer,
+    PhotoDetail,
     Error
   },
   data() {
@@ -30,10 +32,7 @@ export default {
   },
   methods: {
     show() {
-      console.log('click')
-      this.$modal.show(
-        PhotoDetail
-      )
+      this.$modal.show('detail')
     }
   },
   created() {
