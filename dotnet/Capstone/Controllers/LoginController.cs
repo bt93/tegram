@@ -92,5 +92,15 @@ namespace Capstone.Controllers
             userDAO.AddUserInfo(UserId, user.Bio, user.UserPhotoPath );
             return Ok();
         }
+
+
+        [HttpGet("info/{id}")]
+        [Authorize]
+        public IActionResult GetUserInfo(int id)
+
+        {
+            GeneralUser user = userDAO.GetUserInfo(id);
+            return Ok(user);
+        }
     }
 }

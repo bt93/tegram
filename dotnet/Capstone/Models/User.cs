@@ -49,4 +49,16 @@
         public string ConfirmPassword { get; set; }
         public string Role { get; set; }
     }
+
+    /// <summary>
+    /// Model to accept registration parameters
+    /// </summary>
+    public class GeneralUser
+    {
+        public int UserId { get; set; }
+        public string Username { get; set; }
+        public string Role { get; set; }
+        public string Bio { get; set; }
+        public string UserPhotoPath { get; set; }
+    }
 }

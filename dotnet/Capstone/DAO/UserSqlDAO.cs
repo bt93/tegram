@@ -107,5 +107,40 @@ namespace Capstone.DAO
 
             return u;
         }
+
+        public GeneralUser GetUserInfo(int id)
+        {
+            GeneralUser user = new GeneralUser();
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand("SELECT * from USERS WHERE user_id = @user_id", conn);
+                    cmd.Parameters.AddWithValue("@user_id", id);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    while(reader.Read())
+                    {
+                        user.UserId = Convert.ToInt32(reader["user_id"]);
+                        user.Username = Convert.ToString(reader["username"]);
+                        user.Role = Convert.ToString(reader["user_role"]);
+                        user.Bio = Convert.ToString(reader["user_bio"]);
+                        user.UserPhotoPath = Convert.ToString(reader["user_photo_path"]);
+
+                    }
+                }
+                               
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+
+            return user;
+        }
     }
 }
