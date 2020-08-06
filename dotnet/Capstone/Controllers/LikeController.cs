@@ -71,5 +71,14 @@ namespace Capstone.Controllers
         }
 
         // make the like exist put post
+
+        [HttpDelete("{photoId}")]
+        [Authorize]
+        public IActionResult UnlikePhoto(int photoId) //user id and photo id
+
+        {
+            likeDAO.UnlikePhoto(UserId, photoId);
+            return Ok();
+        }
     }
 }

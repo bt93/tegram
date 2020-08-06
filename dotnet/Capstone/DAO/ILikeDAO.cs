@@ -9,6 +9,8 @@ namespace Capstone.DAO
     {
        void LikePhoto(int userId, int photoId);
 
+        void UnlikePhoto(int userId, int photoId);
+
        bool GetLikeState(int userId, int photoId);
     }
 }

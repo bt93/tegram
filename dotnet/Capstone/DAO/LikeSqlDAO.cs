@@ -39,9 +39,31 @@ namespace Capstone.DAO
             }
 
         }
-
-
         // get the count of number of likes "select COUNT(*) as number_of_likes from like_photo where photo_id = @photo_id and user_id = @user_id"
+
+        public void UnlikePhoto(int userId, int photoId)
+        {
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand("DELETE from like_photo where user_id = @user_id AND photo_id = @photo_id", conn);
+                    cmd.Parameters.AddWithValue("@user_id", userId);
+                    cmd.Parameters.AddWithValue("@photo_id", photoId);
+                    cmd.ExecuteNonQuery();
+
+
+                }
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+
+        }
 
 
         public bool GetLikeState(int userId, int photoId) //given a user id (the one logged in) and a photo id, check if an entry exists in the like table
