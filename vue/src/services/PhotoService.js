@@ -13,6 +13,14 @@ export default {
         return axios.get(`/like/${photoId}`);
     },
 
+    uploadPhoto(photo) {
+        return axios.post(`/photo/upload`, {
+            filePath: photo.filePath,
+            caption: photo.caption,
+            userID: photo.userID
+        });
+    },
+
     likePhoto(photoId) {
         return axios.put(`/like/${photoId}`);
     },

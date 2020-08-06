@@ -6,6 +6,7 @@
       <router-link v-bind:to="{ name: 'register' }" v-if="$store.state.token === ''">Register</router-link>
       <router-link v-bind:to="{ name: 'user', params: {id: $store.state.user.userId} }" v-if="$store.state.token != ''"> | {{$store.state.user.username.charAt(0).toUpperCase() + $store.state.user.username.slice(1)}} </router-link>
       <router-link v-bind:to="{name: 'settings'}" v-if="$store.state.token != ''">| Settings</router-link>
+      <router-link v-bind:to="{name: 'upload'}" v-if="$store.state.token != ''">| Upload Photo</router-link>
       <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''"> | Logout</router-link>
     </nav>
     <main>

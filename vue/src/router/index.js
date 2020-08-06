@@ -6,6 +6,7 @@ import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import User from '../views/User'
 import Settings from '../views/Settings'
+import UploadPhoto from '../views/UploadPhoto'
 import store from '../store/index'
 
 Vue.use(Router)
@@ -77,6 +78,15 @@ const router = new Router({
         title: 'User Settings'
       }
     },
+    {
+      path: '/upload',
+      name: 'upload',
+      component: UploadPhoto,
+      meta: {
+        requiresAuth: true,
+        title: 'Upload Photo'
+      }
+    }
   ]
 })
 

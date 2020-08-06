@@ -11,7 +11,7 @@
           <div>
               <label for="pfp">Profile Picture: </label>
               <div @click="uploadPhoto">Upload A Photo</div>
-              <img v-if="user.url" :src="`${$store.state.cloudinaryUrl}w_400,h_400,c_crop,g_face,r_max/w_200/${user.url}`" alt="">
+              <img class="userImg" v-if="user.url" :src="`${$store.state.cloudinaryUrl}w_400,h_400,c_crop,g_face,r_max/w_200/${user.url}`" alt="">
           </div>
           <input type="submit">
       </form>
@@ -72,7 +72,7 @@ form > div {
     flex-direction: column;
 }
 
-form img {
+.userImg {
     width: 200px;
     margin: auto;
     border-radius: 130px;
