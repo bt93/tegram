@@ -2,9 +2,9 @@
   <div id="user">
       <h1 class="title">TEGram</h1>
       <img src="../images/loading.gif" alt="Loading" v-if="isLoading">
-      <error v-else-if="error"/>
-      <h1 v-if="photos.length === 0">Looks Like you don't have any photos yet!</h1>
+      <error v-else-if="error" />
       <div v-else>
+        <h1 v-if="photos.length === 0">Looks Like you don't have any photos yet!</h1>
         <h3>{{photos[0].userName}}</h3>
         <img v-bind:src="`${$store.state.cloudinaryUrl}w_400,h_400,c_crop,g_face,r_max/w_200/v1596719353/TE-Gram/kqwltepz7nzuciby6eew.png`" alt="">
         <photo-container v-for="photo in photos" :key="photo.photoId" :photo="photo"/>
@@ -37,7 +37,11 @@ export default {
       .then(res => {
         if (res.status === 200) {
           this.isLoading = false;
-          res.data.forEach(p => this.photos.push(p));
+          if (res.data.length === 0) {
+            this.error = true
+          } else {
+            res.data.forEach(p => this.photos.push(p));
+          }
         }
       }).catch(err => {
         if (err) {
@@ -52,7 +56,11 @@ export default {
       .then(res => {
         if (res.status === 200) {
           this.isLoading = false;
-          res.data.forEach(p => this.photos.push(p));
+          if (res.data.length === 0) {
+            this.error = true
+          } else {
+            res.data.forEach(p => this.photos.push(p));
+          }
         }
       })
       .catch(err => {

@@ -5,11 +5,15 @@ export default {
         return axios.get('/photo');
     },
 
-    getPhotosByUser(id) {
-        return axios.get(`/photo/${id}`);
+    getPhotosByUser(userId) {
+        return axios.get(`/photo/${userId}`);
     },
 
-    getLikeState(id) {
-        return axios.get(`/like/${id}`);
+    getLikeState(photoId) {
+        return axios.get(`/like/${photoId}`);
+    },
+
+    likePhoto(photoId) {
+        return axios.put(`/like/${photoId}`);
     }
 }
