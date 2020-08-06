@@ -123,11 +123,6 @@ INSERT INTO comments (user_id, contents, photo_id) VALUES (3, 'Eh, Ive seen wors
 
 
 
-comment_id int IDENTITY(1,1) NOT NULL,
-	user_id int not null,
-	contents varchar(200),
-	photo_id int NOT NULL,
-
 GO
 
 
