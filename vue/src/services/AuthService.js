@@ -10,8 +10,8 @@ export default {
     return axios.post('/register', user)
   },
 
-  addUserInfo(bio, photo) {
-    return axios.put('/login/register/setup', {bio: bio, photo: photo});
+  addUserInfo(user) {
+    return axios.put('/login/register/setup', {bio: user.bio, userPhotoPath: user.url});
   }
 
 }

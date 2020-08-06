@@ -4,13 +4,14 @@
       <h2>Settings</h2>
       <form @submit.prevent="submitForm">
           <div>
+              <error v-if="errorMsg"/>
               <label for="bio">Biography: </label>
-              <textarea v-bind="bio" name="bio" id="bio" cols="30" rows="10"></textarea>
+              <textarea v-model="user.bio" name="bio" id="bio" cols="30" rows="10"></textarea>
           </div>
           <div>
               <label for="pfp">Profile Picture: </label>
-              <button @click="uploadPhoto">Upload A Photo</button>
-              <img v-if="url" :src="`${$store.state.cloudinaryUrl}${url}`" alt="">
+              <div @click="uploadPhoto">Upload A Photo</div>
+              <img v-if="user.url" :src="`${$store.state.cloudinaryUrl}w_400,h_400,c_crop,g_face,r_max/w_200/${user.url}`" alt="">
           </div>
           <input type="submit">
       </form>
@@ -19,21 +20,32 @@
 
 <script>
 import authService from '../services/AuthService'
+import Error from '../components/Error'
 
 export default {
+    components: {
+        Error
+    },
     data() {
         return {
-            url: '',
-            bio: ''
+            user: {
+                url: '',
+                bio: ''
+            },
+            errorMsg: false
         }
     },
     methods: {
         submitForm() {
-            authService.addUserInfo(this.bio, this.url)
+            authService.addUserInfo(this.user)
                         .then(res => {
-                            if (this.res) {
-                                console.log(res);
+                            if (res.status === 200) {
+                                this.$router.push({name: 'home'})
                             }
+                        })
+                        .catch(err => {
+                            console.log(err)
+                            this.errorMsg = true;
                         })
         },
         uploadPhoto() {
@@ -42,14 +54,13 @@ export default {
                 uploadPreset: 'lcj744qb'}, (error, result) => { 
                     if (!error && result && result.event === "success") { 
                     console.log('Done! Here is the image info: ', result.info);
-                    this.url = result.info.path;
+                    this.user.url = result.info.path;
                     } else {
                     console.log(error);
                     }
                 }
                 )
             myWidget.open();
-            console.log(this.$store.state.widget)
         }
     }
 }
@@ -59,5 +70,11 @@ export default {
 form > div {
     display: flex;
     flex-direction: column;
+}
+
+form img {
+    width: 200px;
+    margin: auto;
+    border-radius: 130px;
 }
 </style>

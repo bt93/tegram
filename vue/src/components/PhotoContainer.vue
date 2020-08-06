@@ -5,7 +5,7 @@
         <p v-else id="userName">{{photo.userName}}</p>
     </header>
     <section>
-        <img v-bind:src="`${$store.state.cloudinaryUrl}${photo.filePath}`" alt="">
+        <img v-bind:src="`${$store.state.cloudinaryUrl}c_scale,w_2498${photo.filePath}`" alt="">
     </section>
     <section class="actions">
         <div v-if="photo.caption">{{ photo.caption }}</div>
@@ -76,7 +76,7 @@ export default {
     border: 1px solid rgba(219,219,219);
     text-align: left;
     min-width: 300px;
-    max-width: 600px;
+    max-width: 605px;
     border-radius: 15px;
 }
 
