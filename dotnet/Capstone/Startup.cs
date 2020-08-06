@@ -65,6 +65,8 @@ namespace Capstone
             services.AddTransient<IUserDAO>(m => new UserSqlDAO(connectionString));
             services.AddTransient<IPhotoDAO>(m => new PhotoSqlDAO(connectionString));
             services.AddTransient<ILikeDAO>(m => new LikeSqlDAO(connectionString));
+            services.AddTransient<IFavoriteDAO>(m => new FavoriteSqlDAO(connectionString));
+
 
         }
 
