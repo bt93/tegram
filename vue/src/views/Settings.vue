@@ -11,7 +11,7 @@
           <div>
               <label for="pfp">Profile Picture: </label>
               <div @click="uploadPhoto">Upload A Photo</div>
-              <img class="userImg" v-if="user.url" :src="`${$store.state.cloudinaryUrl}w_400,h_400,c_crop,g_face,r_max/w_200/${user.url}`" alt="">
+              <img class="userImg" v-if="user.url" :src="`${$store.state.cloudinaryUrl}w_400,h_400,c_crop,g_face,r_max/w_200${user.url}`" alt="">
           </div>
           <input type="submit">
       </form>
@@ -54,7 +54,7 @@ export default {
                 uploadPreset: 'lcj744qb'}, (error, result) => { 
                     if (!error && result && result.event === "success") { 
                     console.log('Done! Here is the image info: ', result.info);
-                    this.user.url = result.info.path;
+                    this.user.url = '/' + result.info.path;
                     } else {
                     console.log(error);
                     }

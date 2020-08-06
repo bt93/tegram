@@ -31,7 +31,7 @@ export default {
                 uploadPreset: 'lcj744qb'}, (error, result) => { 
                     if (!error && result && result.event === "success") { 
                     console.log('Done! Here is the image info: ', result.info);
-                    this.uploadPhoto.filePath = result.info.path;
+                    this.uploadPhoto.filePath = '/' + result.info.path;
                     } else {
                     console.log(error);
                     }
