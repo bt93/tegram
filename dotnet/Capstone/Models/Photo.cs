@@ -37,11 +37,11 @@ namespace Capstone.Models
         public int UserID { get; set; }
 
 
-        public UploadPhoto(string passedPath, string passedCaption, int passedUserID) //For use when we are uploading a photo for the first time
+        public UploadPhoto(string filePath, string caption, int userID) 
         {           
-            FilePath = passedPath;
-            Caption = passedCaption;
-            UserID = passedUserID;
+            FilePath = filePath;
+            Caption = caption;
+            UserID = userID;
         }
     }
 }
