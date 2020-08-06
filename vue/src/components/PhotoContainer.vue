@@ -5,7 +5,7 @@
         <p v-else id="userName">{{photo.userName}}</p>
     </header>
     <section>
-        <img v-bind:src="`${$store.state.cloudinaryUrl}c_scale,w_2498${photo.filePath}`" alt="">
+        <img v-bind:src="`${$store.state.cloudinaryUrl}c_scale,w_2498${photo.filePath}`" alt="" @click="show">
     </section>
     <section class="actions">
         <div v-if="photo.caption">{{ photo.caption }}</div>
@@ -72,6 +72,12 @@ export default {
             } else if (this.$store.state.token === '') {
                 console.log('no!')
             }
+        },
+        show() {
+            console.log('click')
+            this.$modal.show('detail', {
+                photo: this.photo
+            })
         }
     },
     created() {

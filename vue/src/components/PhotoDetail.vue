@@ -1,12 +1,23 @@
 <template>
   <modal name="detail">
-      <p>Hello</p>
+      <photo-container />
+      <section class="comments">
+        <p class="comment">This is a comment</p>
+      </section>
   </modal>
 </template>
 
 <script>
+import PhotoContainer from './PhotoContainer'
+
 export default {
-    name: 'photo-detail'
+    name: 'photo-detail',
+    components: {
+      PhotoContainer
+    },
+    props: {
+      photo: Object
+    }
 }
 </script>
 

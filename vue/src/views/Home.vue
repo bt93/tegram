@@ -27,11 +27,6 @@ export default {
       isLoading: true
     }
   },
-  methods: {
-    show() {
-      this.$modal.show('detail')
-    }
-  },
   created() {
     photoService.getAllPhotos()
       .then(res => {
