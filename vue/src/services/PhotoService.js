@@ -15,5 +15,9 @@ export default {
 
     likePhoto(photoId) {
         return axios.put(`/like/${photoId}`);
+    },
+
+    unlikePhoto(photoId) {
+        return axios.delete(`/like/${photoId}`);
     }
 }

@@ -46,13 +46,20 @@ export default {
         clickLike() {
             if (this.liked && this.$store.state.token != '') {
                 this.liked = false;
+                photoService.unlikePhoto(this.photo.photoId)
+                    .then(res => {
+                        if (res.status === 200) {
+                            console.log('unliked');
+                            this.photo.likeCount--;
+                        }
+                    })
             } else if (!this.liked && this.$store.state.token != '') {
                 this.liked = true;
                 photoService.likePhoto(this.photo.photoId)
                     .then(res => {
                         if (res.status === 200) {
                             console.log('liked');
-                            this.photo.likeCount++
+                            this.photo.likeCount++;
                         }
                     })
                     .catch(err => console.log(err));
