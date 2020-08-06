@@ -10,8 +10,8 @@
     <section class="actions">
         <div v-if="photo.caption">{{ photo.caption }}</div>
         <span class="icon">
-            <i  @click="clickLike()" v-if="!liked" class="heart far fa-heart"></i>
-            <i  @click="clickLike()" v-if="liked" class="heart fas fa-heart"></i>
+            <i  @click.stop="clickLike()" v-if="!liked" class="heart far fa-heart"></i>
+            <i  @click.stop="clickLike()" v-if="liked" class="heart fas fa-heart"></i>
             {{photo.likeCount}}
         </span>
         <span class="icon">
@@ -19,14 +19,19 @@
             <i @click="clickFavorite" v-if="favorited" class="fas fa-bookmark"></i>
         </span>
     </section>
+    <login-alert />
   </div>
 </template>
 
 <script>
 import photoService from '../services/PhotoService'
+import LoginAlert from './LoginAlert'
 
 export default {
     name: 'photo-container',
+    components: {
+        LoginAlert
+    },
     data() {
         return {
             liked: false,
@@ -43,7 +48,6 @@ export default {
                 photoService.unlikePhoto(this.photo.photoId)
                     .then(res => {
                         if (res.status === 200) {
-                            console.log('unliked');
                             this.photo.likeCount--;
                         }
                     })
@@ -52,11 +56,12 @@ export default {
                 photoService.likePhoto(this.photo.photoId)
                     .then(res => {
                         if (res.status === 200) {
-                            console.log('liked');
                             this.photo.likeCount++;
                         }
                     })
                     .catch(err => console.log(err));
+            } else if (this.$store.state.token === '') {
+                this.$modal.show('alert')
             }
         },
         clickFavorite() {
@@ -64,6 +69,8 @@ export default {
                 this.favorited = false;
             } else if (!this.favorited && this.$store.state.token != '') {
                 this.favorited = true;
+            } else if (this.$store.state.token === '') {
+                console.log('no!')
             }
         }
     },
