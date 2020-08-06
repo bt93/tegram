@@ -1,6 +1,5 @@
 <template>
   <div id="user">
-      <h1 class="title">TEGram</h1>
       <img src="../images/loading.gif" alt="Loading" v-if="isLoading">
       <error v-else-if="error" />
       <div v-else>
