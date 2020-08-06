@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Capstone.DAO;
 using Capstone.Models;
@@ -14,6 +15,31 @@ namespace Capstone.Controllers
     [ApiController]
     public class PhotoController : ControllerBase
     {
+
+        protected string UserName
+        {
+            get
+            {
+                return User?.Identity?.Name;
+            }
+        }
+
+
+        protected int UserId
+        {
+            get
+            {
+                int userId = 0;
+                Claim subjectClaim = User?.Claims?.Where(cl => cl.Type == "sub").FirstOrDefault();
+                if (subjectClaim != null)
+                {
+                    int.TryParse(subjectClaim.Value, out userId);
+                }
+                return userId;
+            }
+        }
+
+
         private readonly IPhotoDAO photoDAO;
 
         public PhotoController (IPhotoDAO _photoDAO)
@@ -44,6 +70,25 @@ namespace Capstone.Controllers
             photoDAO.UploadPhoto(uploadedPhoto);
             return Ok();
         }
+
+
+
+        /// <summary>
+        ///  Get a single Photo including all information 
+        ///  required for a detail view.
+        ///  path of /photo/detail/(photoId)
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
+        [HttpGet("detail/{photoId}")]
+        [Authorize]
+        public IActionResult GetDetailPhoto(int photoId)
+        {
+            Photo photo = new Photo();
+            photo = photoDAO.GetDetailPhoto(photoId);
+            return Ok(photo);
+        }
+
 
     }
 

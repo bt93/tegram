@@ -48,7 +48,9 @@ namespace Capstone.Controllers
         }
 
 
+
         [HttpPut("{photoId}")]
+        [Authorize]
         public IActionResult LikePhoto(int photoId)
         {
 

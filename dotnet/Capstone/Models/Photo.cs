@@ -13,7 +13,9 @@ namespace Capstone.Models
         public string UserName { get; set; }
         public int LikeCount { get; set; }
         public int PhotoId { get; set; }
+        public List<String> Comments { get; set; }
 
+        public Photo() { }
 
         public Photo(string passedPath, string passedCaption, int passedUserID, string passedUserName, int passedNumberOfLikes, int passedPhotoId)
         {
@@ -30,7 +32,6 @@ namespace Capstone.Models
 
     public class UploadPhoto
     {
-
         public string FilePath { get; set; }
         public string Caption { get; set; }
         public int UserID { get; set; }

@@ -36,11 +36,12 @@ CREATE TABLE photos (
 )
 CREATE TABLE comments (
 	comment_id int IDENTITY(1,1) NOT NULL,
+	user_id int not null,
 	contents varchar(200),
-	like_count int DEFAULT 0 NOT NULL,
 	photo_id int NOT NULL,
 	CONSTRAINT PK_comment PRIMARY KEY (comment_id),
-	CONSTRAINT FK_photo FOREIGN KEY (photo_id) REFERENCES photos(photo_id)
+	CONSTRAINT FK_photo_comment FOREIGN KEY (photo_id) REFERENCES photos(photo_id),
+	CONSTRAINT FK_User_comment FOREIGN KEY(user_id) REFERENCES users(user_id)
 )
 CREATE TABLE like_photo (
 	like_photo_id int IDENTITY(1,1) NOT NULL,
@@ -92,8 +93,6 @@ INSERT INTO photos (file_path, user_id, caption) VALUES ('/v1596549798/TE-Gram/T
 INSERT INTO photos (file_path, user_id, caption) VALUES ('/v1596549843/TE-Gram/TEworkplacePhoto21_l4cehq.jpg', 6, 'Winner of the "most screens" award. Thanks, Mike!');
 
 
-
-
 INSERT INTO like_photo (user_id, photo_id) VALUES (6, 13);
 INSERT INTO like_photo (user_id, photo_id) VALUES (4, 13);
 INSERT INTO like_photo (user_id, photo_id) VALUES (2, 13);
@@ -114,8 +113,20 @@ INSERT INTO like_photo (user_id, photo_id) VALUES (1, 21);
 INSERT INTO like_photo (user_id, photo_id) VALUES (1, 19);
 
 
+-- dummy data: Comments.
+
+INSERT INTO comments (user_id, contents, photo_id) VALUES (3, 'Hahaha! You really should have!', 12);
+INSERT INTO comments (user_id, contents, photo_id) VALUES (3, 'Yeah, man, thats a mess!', 12);
+INSERT INTO comments (user_id, contents, photo_id) VALUES (3, 'What, were you born in a barn?', 12);
+INSERT INTO comments (user_id, contents, photo_id) VALUES (3, 'Eh, Ive seen worse.', 12);
 
 
+
+
+comment_id int IDENTITY(1,1) NOT NULL,
+	user_id int not null,
+	contents varchar(200),
+	photo_id int NOT NULL,
 
 GO
 

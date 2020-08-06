@@ -8,6 +8,7 @@ namespace Capstone.DAO
         List<Photo> GetAllPhotos();
         List<Photo> GetUserPhotos(int user);
         void UploadPhoto(UploadPhoto uploadedPhoto);
+        Photo GetDetailPhoto(int photoId);
 
     }
 
