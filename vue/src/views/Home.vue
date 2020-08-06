@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <div class="header">
-      <span><img src="..\images\TEGram_Smaller_Rounded.png" class="small-logo" alt=""></span><h1 class="title">TEGram</h1>
+      <span @click="show"><img src="..\images\TEGram_Smaller_Rounded.png" class="small-logo" alt=""></span><h1 class="title">TEGram</h1>
     </div>
     <img src="../images/loading.gif" alt="TEGram" v-if="isLoading">
     <error v-else-if="error"/>
@@ -13,6 +13,7 @@
 import PhotoContainer from '../components/PhotoContainer'
 import photoService from '../services/PhotoService'
 import Error from '../components/Error'
+import PhotoDetail from '../components/PhotoDetail'
 
 export default {
   name: "home",
@@ -25,6 +26,14 @@ export default {
       photos: [],
       error: false,
       isLoading: true
+    }
+  },
+  methods: {
+    show() {
+      console.log('click')
+      this.$modal.show(
+        PhotoDetail
+      )
     }
   },
   created() {
