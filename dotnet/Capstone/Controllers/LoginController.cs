@@ -95,7 +95,6 @@ namespace Capstone.Controllers
 
 
         [HttpGet("info/{id}")]
-        [Authorize]
         public IActionResult GetUserInfo(int id)
 
         {
