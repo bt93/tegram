@@ -124,9 +124,9 @@ INSERT INTO like_photo (user_id, photo_id) VALUES (1, 19);
 -- dummy data: Comments.
 
 INSERT INTO comments (user_id, contents, photo_id) VALUES (3, 'Hahaha! You really should have!', 12);
-INSERT INTO comments (user_id, contents, photo_id) VALUES (3, 'Yeah, man, thats a mess!', 12);
-INSERT INTO comments (user_id, contents, photo_id) VALUES (3, 'What, were you born in a barn?', 12);
-INSERT INTO comments (user_id, contents, photo_id) VALUES (3, 'Eh, Ive seen worse.', 12);
+INSERT INTO comments (user_id, contents, photo_id) VALUES (4, 'Yeah, man, thats a mess!', 12);
+INSERT INTO comments (user_id, contents, photo_id) VALUES (1, 'What, were you born in a barn?', 12);
+INSERT INTO comments (user_id, contents, photo_id) VALUES (5, 'Eh, Ive seen worse.', 12);
 
 --Dummy Data: Favorited Photos
 

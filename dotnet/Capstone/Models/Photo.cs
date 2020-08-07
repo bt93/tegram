@@ -13,7 +13,7 @@ namespace Capstone.Models
         public string UserName { get; set; }
         public int LikeCount { get; set; }
         public int PhotoId { get; set; }
-        public List<String> Comments { get; set; }
+        public List<Comment> Comments { get; set; }
         //public bool Favorited { get; set; }
 
         public Photo() { }

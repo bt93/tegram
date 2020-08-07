@@ -10,11 +10,13 @@ namespace Capstone.Models
         public int UserId { get; set; }
         public int PhotoId { get; set; }
         public string Contents { get; set; }
+        public string UserName { get; set; }
 
-        public Comment(int passedPhotoId, string contents)
+        public Comment(int passedPhotoId, string contents, string username)
         {
             PhotoId = passedPhotoId;
             Contents = contents;
+            UserName = username;
         }
     }
 }

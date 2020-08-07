@@ -132,8 +132,7 @@ namespace Capstone.DAO
         public Photo GetDetailPhoto(int photo)
         {
             Photo assembledPhoto = new Photo();
-            List<String> comments = new List<string>();
-            //bool favoriteExists = false;
+            List<Comment> comments = new List<Comment>();
 
             try
             {
@@ -160,31 +159,22 @@ namespace Capstone.DAO
                     reader.Close();
 
                     //Gets the comments for a photo and stores them in a list within the photo object
-                    cmd = new SqlCommand("SELECT * from comments where photo_id = @photoId", conn);
+                    cmd = new SqlCommand("SELECT contents, username, users.user_id from comments JOIN users on users.user_id = comments.user_id where photo_id = @photoId", conn);
                     cmd.Parameters.AddWithValue("@photoId", photo);
                     reader = cmd.ExecuteReader();
 
                     while (reader.Read())
                     {
                         string comment = (Convert.ToString(reader["contents"]));
-                        comments.Add(comment);
+                        string username = (Convert.ToString(reader["username"]));
+                        Comment thisComment = new Comment(photo, comment, username);
+                        thisComment.UserId = (Convert.ToInt32(reader["user_id"]));
+
+
+
+                        comments.Add(thisComment);
                     }
                     assembledPhoto.Comments = comments;
-
-
-                    ////Gets the favorited status of a photo and stores it in a boolean within the photo object
-                    //// This is unneccesary as we can already get this from the FavoriteSqlDAO
-                    //reader.Close();
-                    //cmd = new SqlCommand("Select * from favorite_photo where user_id = 1 and photo_id = 5", conn);
-                    //cmd.Parameters.AddWithValue("@user_id", assembledPhoto.UserID);
-                    //cmd.Parameters.AddWithValue("@photo_id", assembledPhoto.PhotoId);
-                    //int returnedScalar = (Convert.ToInt32(cmd.ExecuteScalar()));
-
-                    //if (returnedScalar > 0)
-                    //{
-                    //    favoriteExists = true;
-                    //}
-                    //assembledPhoto.Favorited = favoriteExists;
 
                 }
 
