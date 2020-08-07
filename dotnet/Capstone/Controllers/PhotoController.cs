@@ -81,7 +81,6 @@ namespace Capstone.Controllers
         /// <param name="user"></param>
         /// <returns></returns>
         [HttpGet("detail/{photoId}")]
-        [Authorize]
         public IActionResult GetDetailPhoto(int photoId)
         {
             Photo photo = new Photo();

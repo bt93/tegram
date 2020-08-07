@@ -9,6 +9,10 @@ export default {
         return axios.get(`/photo/${userId}`);
     },
 
+    getDetailPhoto(photoId) {
+        return axios.get(`/photo/detail/${photoId}`);
+    },
+
     getLikeState(photoId) {
         return axios.get(`/like/${photoId}`);
     },

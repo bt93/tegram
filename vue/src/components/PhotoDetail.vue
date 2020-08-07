@@ -1,5 +1,5 @@
 <template>
-  <modal name="detail" :adaptive="true" @before-open="beforeOpen" :reset="true" height="auto" :scrollable="true">
+  <modal name="detail" :adaptive="true" @before-open="beforeOpen" @closed="closed" :reset="true" height="auto" :scrollable="true">
       <photo-container :photo="photo" />
         <section class="actions">
         <div v-if="photo.caption">{{ photo.caption }}</div>
@@ -13,7 +13,7 @@
             <i @click="clickFavorite" v-if="favorited" class="fas fa-bookmark"></i>
         </span>
         <section class="comments">
-        <p class="comment">This is a comment</p>
+        <p class="comment" v-for="comment in comments" :key="comment">{{ comment }}</p>
         </section>
         <section> 
           <form @submit.prevent="submitComment">
@@ -40,9 +40,13 @@ export default {
         photo: {},
         liked: false,
         favorited: false,
+        comments: []
       }
     },
     methods: {
+    closed() {
+      this.comments = [];
+    },
       submitComment(e) {
         console.log(e)
       },
@@ -59,6 +63,11 @@ export default {
                     this.favorited = res.data;
                 })
         }
+
+        photoService.getDetailPhoto(this.photo.photoId) 
+              .then(res => {
+                res.data.comments.forEach(c => this.comments.push(c));
+              })
       },
       clickLike() {
             if (this.liked && this.$store.state.token != '') {
