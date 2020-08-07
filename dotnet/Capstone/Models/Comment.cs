@@ -5,15 +5,16 @@ using System.Threading.Tasks;
 
 namespace Capstone.Models
 {
-    public class Favorite
+    public class Comment
     {
         public int UserId { get; set; }
         public int PhotoId { get; set; }
+        public string Contents { get; set; }
 
-        public Favorite(int passedPhotoId)
+        public Comment(int passedPhotoId, string contents)
         {
             PhotoId = passedPhotoId;
-
+            Contents = contents;
         }
     }
 }
