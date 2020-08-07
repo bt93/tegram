@@ -51,6 +51,14 @@ CREATE TABLE like_photo (
 	CONSTRAINT FK_user_like FOREIGN KEY (user_id) REFERENCES users(user_id),
 	CONSTRAINT FK_photo_like FOREIGN KEY (photo_id) REFERENCES photos(photo_id)
 )
+CREATE TABLE favorite_photo (
+	favorite_photo_id int IDENTITY(1,1) NOT NULL,
+	user_id int NOT NULL,
+	photo_id int NOT NULL,
+	CONSTRAINT PK_favorite_photo PRIMARY KEY (favorite_photo_id),
+	CONSTRAINT FK_user_favorite FOREIGN KEY (user_id) REFERENCES users(user_id),
+	CONSTRAINT FK_photo_favorite FOREIGN KEY (photo_id) REFERENCES photos(photo_id)
+)
 
 --populate default data
 
