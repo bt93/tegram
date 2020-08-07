@@ -128,6 +128,15 @@ INSERT INTO comments (user_id, contents, photo_id) VALUES (3, 'Yeah, man, thats 
 INSERT INTO comments (user_id, contents, photo_id) VALUES (3, 'What, were you born in a barn?', 12);
 INSERT INTO comments (user_id, contents, photo_id) VALUES (3, 'Eh, Ive seen worse.', 12);
 
+--Dummy Data: Favorited Photos
+
+INSERT INTO favorite_photo (user_id, photo_id) VALUES (6, 12);
+INSERT INTO favorite_photo (user_id, photo_id) VALUES (6, 1);
+INSERT INTO favorite_photo (user_id, photo_id) VALUES (6, 18);
+INSERT INTO favorite_photo (user_id, photo_id) VALUES (6, 20);
+INSERT INTO favorite_photo (user_id, photo_id) VALUES (6, 7);
+INSERT INTO favorite_photo (user_id, photo_id) VALUES (6, 3);
+INSERT INTO favorite_photo (user_id, photo_id) VALUES (6, 4);
 
 
 

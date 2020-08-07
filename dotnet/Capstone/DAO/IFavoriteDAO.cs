@@ -11,6 +11,6 @@ namespace Capstone.DAO
 
         void UnfavoritePhoto(int userId, int photoId);
 
-       
+        bool GetPhotoFavoriteState(int userId, int photoId);
     }
 }
