@@ -84,7 +84,7 @@ namespace Capstone.DAO
                 {
                     conn.Open();
 
-                    SqlCommand cmd = new SqlCommand("Select * from favorite_photo where user_id = 1 and photo_id = 5", conn);
+                    SqlCommand cmd = new SqlCommand("Select * from favorite_photo where user_id = @user_id and photo_id = @photo_id", conn);
                     cmd.Parameters.AddWithValue("@user_id", userId);
                     cmd.Parameters.AddWithValue("@photo_id", photoId);
                     int returnedScalar = (Convert.ToInt32(cmd.ExecuteScalar()));

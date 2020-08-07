@@ -14,6 +14,7 @@ namespace Capstone.Models
         public int LikeCount { get; set; }
         public int PhotoId { get; set; }
         public List<String> Comments { get; set; }
+        //public bool Favorited { get; set; }
 
         public Photo() { }
 
