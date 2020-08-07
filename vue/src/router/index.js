@@ -89,8 +89,8 @@ const router = new Router({
       }
     },
     {
-      path: './favorites',
-      name: 'favorite',
+      path: '/favorites',
+      name: 'favorites',
       component: Favorites,
       meta: {
         requiresAuth: true,

@@ -56,7 +56,6 @@ namespace Capstone.Controllers
         }
 
         [HttpGet("{user}")]
-        [Authorize]
         public IActionResult GetUserPhotos(int user)
         {
             List<Photo> Photos = new List<Photo>();

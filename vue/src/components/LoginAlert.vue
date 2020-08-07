@@ -1,5 +1,5 @@
 <template>
-  <modal name="alert">
+  <modal name="alert" :adaptive="true">
       <h3>You must login to like or favorite a photo!</h3>
       <button @click="goToLogin">Login</button>
       <button @click="goToRegister">Register</button>

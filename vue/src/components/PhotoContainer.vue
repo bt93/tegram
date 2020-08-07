@@ -21,7 +21,6 @@
     </section>   
   </div>
 </template>
-
 <script>
 import photoService from '../services/PhotoService'
 
@@ -82,7 +81,7 @@ export default {
             }
         },
         show() {
-            this.$modal.show('detail', true,{ photo: 1 })
+            this.$modal.show('detail',  {photo: this.photo} )
         }
     },
     created() {
@@ -91,6 +90,11 @@ export default {
                 .then(res => {
                     this.liked = res.data;
                 });
+
+            photoService.getPhotoFavoriteState(this.photo.photoId)
+                .then(res => {
+                    this.favorited = res.data;
+                })
         }
     }
 }

@@ -21,9 +21,13 @@ export default {
         return axios.delete(`/favorite/${photoId}`);
     },
 
-    // getPhotoFavoriteState(userId, photoId) {
-    //     return axios.get()
-    // },
+    getPhotoFavoriteState(photoId) {
+        return axios.get(`/favorite/${photoId}`);
+    },
+
+    getAuthenticatedUserFavoritePhotos() {
+        return axios.get('/favorite/myfavorites');
+    },
 
     uploadPhoto(photo) {
         return axios.post(`/photo/upload`, {
