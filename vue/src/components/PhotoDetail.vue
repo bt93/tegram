@@ -1,5 +1,5 @@
 <template>
-  <modal name="detail" :adaptive="true" @before-open="beforeOpen" @closed="closed" :reset="true" height="auto" :scrollable="true">
+  <modal name="detail" :adaptive="true" @before-open="beforeOpen" @closed="closed" :reset="true" minWidth="10000px" height="auto" :scrollable="true">
       <photo-container :photo="photo" />
         <section class="actions">
         <div v-if="photo.caption">{{ photo.caption }}</div>
@@ -13,12 +13,12 @@
             <i @click="clickFavorite" v-if="favorited" class="fas fa-bookmark"></i>
         </span>
         <section class="comments">
-        <p class="comment" v-for="comment in comments" :key="comment">{{ comment }}</p>
+        <p class="comment" v-for="comment in comments" :key="comment">{{comment.userName}}: {{ comment.contents }}</p>
         </section>
         <section> 
           <form @submit.prevent="submitComment">
             <label for="newComment">New Comment</label>
-            <input type="text" name="newComment" id="newComment ">
+            <input type="text" name="newComment" id="newComment" v-model="newComment">
             <input type="submit" value="Submit">
           </form>
         </section>
@@ -40,15 +40,35 @@ export default {
         photo: {},
         liked: false,
         favorited: false,
-        comments: []
+        comments: [],
+        newComment: ''
       }
     },
     methods: {
     closed() {
       this.comments = [];
+      this.newComment = '';
     },
-      submitComment(e) {
-        console.log(e)
+      submitComment() {
+        if (this.$store.state.token === '') {
+          this.$modal.show('alert');
+        } else {
+          let comment = {
+            photoId: this.photo.photoId,
+            contents: this.newComment,
+            userName: this.$store.state.user.username
+          }
+          photoService.addComment(comment)
+            .then(res => {
+              if (res.status === 200) {
+                this.comments.push(comment)
+                this.newComment = '';
+              }
+            })
+            .catch(err => {
+              console.log(err);
+            })
+        }
       },
        beforeOpen (event) {
         this.photo = event.params.photo

@@ -13,6 +13,13 @@ export default {
         return axios.get(`/photo/detail/${photoId}`);
     },
 
+    addComment(comment) {
+        return axios.post('/comment', {
+            photoId: comment.photoId,
+            contents: comment.contents
+        })
+    },
+
     getLikeState(photoId) {
         return axios.get(`/like/${photoId}`);
     },
