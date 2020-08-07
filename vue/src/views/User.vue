@@ -72,12 +72,9 @@ export default {
     photoService.getPhotosByUser(this.userId)
       .then(res => {
         if (res.status === 200) {
-          if (res.data.length === 0) {
-            this.isLoading = false
-          } else {
+            this.isLoading = false;
             res.data.forEach(p => this.photos.push(p));
           }
-        }
       })
       .catch(err => {
         if (err) {
