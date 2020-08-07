@@ -42,11 +42,17 @@ namespace Capstone.Controllers
 
 
         private readonly IFavoriteDAO favoriteDAO;
+        private readonly IPhotoDAO photoDAO;
 
-        public FavoriteController(IFavoriteDAO _favoriteDAO)
+
+        public FavoriteController(IFavoriteDAO _favoriteDAO, IPhotoDAO _photoDAO)
         {
             favoriteDAO = _favoriteDAO;
+            photoDAO = _photoDAO;
         }
+
+
+  
 
 
         // Method to get the list of users favorites
@@ -87,5 +93,30 @@ namespace Capstone.Controllers
 
             return Ok();
         }
+
+
+        [HttpGet("{photoId}")]
+        [Authorize]
+        public IActionResult GetPhotoFavoriteState(int photoId) //user id and photo id
+
+        {
+            bool isFavorited = favoriteDAO.GetPhotoFavoriteState(UserId, photoId);
+            return Ok(isFavorited);
+        }
+
+        // Return only the photos favorited by the authenticated user Using the photoDAO
+        [HttpGet("myfavorites")]
+        [Authorize]
+        public IActionResult GetAuthenticatedUserFavoritePhotos()
+        {
+            List<Photo> favoritedPhotos = new List<Photo>();
+
+            favoritedPhotos = photoDAO.GetAuthenticatedUserFavoritePhotos(UserId);
+            return Ok(favoritedPhotos); 
+        }
+
+
+
+
     }
 }

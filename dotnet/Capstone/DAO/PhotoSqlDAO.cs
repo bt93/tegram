@@ -197,6 +197,53 @@ namespace Capstone.DAO
             return assembledPhoto;
         }
 
+        public List<Photo> GetAuthenticatedUserFavoritePhotos(int UserId)
+        {
+            List<int> authenticatedFavoritedPhotoIds = new List<int>();
+            List<Photo> favoritedPhotos = new List<Photo>();
+            
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    //get a list of photo ids
+
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand("Select * from favorite_photo where user_id = @user_id", conn);
+
+                    cmd.Parameters.AddWithValue("@user_id", UserId);
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        int id = (Convert.ToInt32(reader["photo_id"]));
+                        authenticatedFavoritedPhotoIds.Add(id);
+                                             
+                    }
+                    reader.Close();
+
+                    //for each ID
+
+                    foreach (int id in authenticatedFavoritedPhotoIds)
+                    {
+                        favoritedPhotos.Add(GetDetailPhoto(id));
+                    }
+
+                }
+
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+
+            return favoritedPhotos;
+
+
+        }
+        
+
     }
 }
 
