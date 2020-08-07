@@ -15,12 +15,13 @@ namespace Capstone.DAO
         public PhotoSqlDAO(string dbConnectionString)
         {
             connectionString = dbConnectionString;
-        }
+
+    }
 
 
-        //TODO Add comment functionality to other Get Photo Methods
+    //TODO Add comment functionality to other Get Photo Methods
 
-        public List<Photo> GetAllPhotos()
+    public List<Photo> GetAllPhotos()
         {
             List<Photo> Photos = new List<Photo>();
             
@@ -62,6 +63,7 @@ namespace Capstone.DAO
         public List<Photo> GetUserPhotos(int user)
         {
             List<Photo> Photos = new List<Photo>();
+            List<String> comments = new List<string>();
 
             try
             {
@@ -87,6 +89,9 @@ namespace Capstone.DAO
                         Photo thisPhoto = new Photo(path, caption, id, username, numberOfLikes, photoId);
 
                         Photos.Add(thisPhoto);
+
+
+
 
                     }
                 }
@@ -128,13 +133,14 @@ namespace Capstone.DAO
         {
             Photo assembledPhoto = new Photo();
             List<String> comments = new List<string>();
+            //bool favoriteExists = false;
 
             try
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
-
+                                                    
                     SqlCommand cmd = new SqlCommand("SELECT file_path, caption, users.user_id, users.username, photos.photo_id,(SELECT COUNT(*) from like_photo where like_photo.photo_id = photos.photo_id) as number_of_likes from photos JOIN users on users.user_id = photos.user_id  where photos.photo_id = @photoId", conn);
 
                     cmd.Parameters.AddWithValue("@photoId", photo);
@@ -153,6 +159,7 @@ namespace Capstone.DAO
                     }
                     reader.Close();
 
+                    //Gets the comments for a photo and stores them in a list within the photo object
                     cmd = new SqlCommand("SELECT * from comments where photo_id = @photoId", conn);
                     cmd.Parameters.AddWithValue("@photoId", photo);
                     reader = cmd.ExecuteReader();
@@ -162,8 +169,23 @@ namespace Capstone.DAO
                         string comment = (Convert.ToString(reader["contents"]));
                         comments.Add(comment);
                     }
-
                     assembledPhoto.Comments = comments;
+
+
+                    ////Gets the favorited status of a photo and stores it in a boolean within the photo object
+                    //// This is unneccesary as we can already get this from the FavoriteSqlDAO
+                    //reader.Close();
+                    //cmd = new SqlCommand("Select * from favorite_photo where user_id = 1 and photo_id = 5", conn);
+                    //cmd.Parameters.AddWithValue("@user_id", assembledPhoto.UserID);
+                    //cmd.Parameters.AddWithValue("@photo_id", assembledPhoto.PhotoId);
+                    //int returnedScalar = (Convert.ToInt32(cmd.ExecuteScalar()));
+
+                    //if (returnedScalar > 0)
+                    //{
+                    //    favoriteExists = true;
+                    //}
+                    //assembledPhoto.Favorited = favoriteExists;
+
                 }
 
             }
