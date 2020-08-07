@@ -1,22 +1,22 @@
 <template>
-  <modal name="detail">
-      <photo-container />
+  <modal name="detail" :adaptive="true">
+      <!-- <photo-container /> -->
       <section class="comments">
-        <p class="comment">This is a comment</p>
+        <p class="comment">{{photo}}</p>
       </section>
   </modal>
 </template>
 
 <script>
-import PhotoContainer from './PhotoContainer'
+// import PhotoContainer from './PhotoContainer'
 
 export default {
     name: 'photo-detail',
     components: {
-      PhotoContainer
+      // PhotoContainer
     },
     props: {
-      photo: Object
+      photo: Number
     }
 }
 </script>

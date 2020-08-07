@@ -13,6 +13,18 @@ export default {
         return axios.get(`/like/${photoId}`);
     },
 
+    favoritePhoto(photoId) {
+        return axios.post(`/favorite/${photoId}`);
+    },
+
+    unfavoritePhoto(photoId) {
+        return axios.delete(`/favorite/${photoId}`);
+    },
+
+    // getPhotoFavoriteState(userId, photoId) {
+    //     return axios.get()
+    // },
+
     uploadPhoto(photo) {
         return axios.post(`/photo/upload`, {
             filePath: photo.filePath,

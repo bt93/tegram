@@ -4,6 +4,7 @@
     <error v-else-if="error"/>
     <photo-container v-else v-for="photo in photos" :key="photo.photoId" :photo="photo"/>
     <photo-detail />
+    <login-alert />
   </div>
 </template>
 
@@ -12,12 +13,14 @@ import PhotoContainer from '../components/PhotoContainer'
 import photoService from '../services/PhotoService'
 import Error from '../components/Error'
 import PhotoDetail from '../components/PhotoDetail'
+import LoginAlert from '../components/LoginAlert'
 
 export default {
   name: "home",
   components: {
     PhotoContainer,
     PhotoDetail,
+    LoginAlert,
     Error
   },
   data() {

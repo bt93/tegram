@@ -62,6 +62,15 @@ export default {
                 )
             myWidget.open();
         }
+    },
+    created() {
+        authService.getUserInfo(this.$store.state.user.userId)
+            .then(res => {
+                if (res.status === 200) {
+                    this.user.bio = res.data.bio;
+                    this.user.url = res.data.userPhotoPath
+                }
+            })
     }
 }
 </script>

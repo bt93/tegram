@@ -7,6 +7,7 @@ import Register from '../views/Register.vue'
 import User from '../views/User'
 import Settings from '../views/Settings'
 import UploadPhoto from '../views/UploadPhoto'
+import Favorites from '../views/Favorites'
 import store from '../store/index'
 
 Vue.use(Router)
@@ -85,6 +86,15 @@ const router = new Router({
       meta: {
         requiresAuth: true,
         title: 'Upload Photo'
+      }
+    },
+    {
+      path: './favorites',
+      name: 'favorite',
+      component: Favorites,
+      meta: {
+        requiresAuth: true,
+        title: 'Favorites'
       }
     }
   ]

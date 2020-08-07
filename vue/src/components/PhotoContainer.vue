@@ -18,20 +18,15 @@
             <i @click="clickFavorite" v-if="!favorited" class="far fa-bookmark"></i>
             <i @click="clickFavorite" v-if="favorited" class="fas fa-bookmark"></i>
         </span>
-    </section>
-    <login-alert />
+    </section>   
   </div>
 </template>
 
 <script>
 import photoService from '../services/PhotoService'
-import LoginAlert from './LoginAlert'
 
 export default {
     name: 'photo-container',
-    components: {
-        LoginAlert
-    },
     data() {
         return {
             liked: false,
@@ -44,18 +39,18 @@ export default {
     methods: {
         clickLike() {
             if (this.liked && this.$store.state.token != '') {
-                this.liked = false;
                 photoService.unlikePhoto(this.photo.photoId)
                     .then(res => {
                         if (res.status === 200) {
+                            this.liked = false;
                             this.photo.likeCount--;
                         }
                     })
             } else if (!this.liked && this.$store.state.token != '') {
-                this.liked = true;
                 photoService.likePhoto(this.photo.photoId)
                     .then(res => {
                         if (res.status === 200) {
+                            this.liked = true;
                             this.photo.likeCount++;
                         }
                     })
@@ -66,18 +61,28 @@ export default {
         },
         clickFavorite() {
             if (this.favorited && this.$store.state.token != '') {
-                this.favorited = false;
+                photoService.unfavoritePhoto(this.photo.photoId)
+                    .then(res => {
+                        if (res.status === 200) {
+                            this.favorited = false;
+                        }
+                    })
+                    .catch(err => console.log(err));
             } else if (!this.favorited && this.$store.state.token != '') {
                 this.favorited = true;
+                photoService.favoritePhoto(this.photo.photoId)
+                    .then(res => {
+                        if (res.status === 200) {
+                            this.favorited = true;
+                        }
+                    })
+                    .catch(err => console.log(err));
             } else if (this.$store.state.token === '') {
-                console.log('no!')
+                this.$modal.show('alert');
             }
         },
         show() {
-            console.log('click')
-            this.$modal.show('detail', {
-                photo: this.photo
-            })
+            this.$modal.show('detail', true,{ photo: 1 })
         }
     },
     created() {
