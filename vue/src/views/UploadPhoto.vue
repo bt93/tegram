@@ -4,8 +4,8 @@
           <label for="caption">Caption</label>
           <textarea v-model="uploadPhoto.caption" name="caption" id="caption" cols="30" rows="10"></textarea>
           <label for="pfp">Photo: </label>
-          <div @click="upload">Upload A Photo</div>
-          <img v-if="uploadPhoto.filePath" :src="`${$store.state.cloudinaryUrl}/c_scale,w_2498/${uploadPhoto.filePath}`" alt="Uploaded Photo">
+          <div @click="upload" class="uploadButton">Upload A Photo</div>
+          <img class="uploadedPhoto" v-if="uploadPhoto.filePath" :src="`${$store.state.cloudinaryUrl}/c_scale,w_2498/${uploadPhoto.filePath}`" alt="Uploaded Photo">
           <input type="submit">
       </form>
   </div>
@@ -59,5 +59,30 @@ export default {
 form {
     display: flex;
     flex-direction: column;
+}
+
+.uploadedPhoto {
+    min-width: 300px;
+    max-width: 605px;
+    width: 100%;
+    max-height: 970px;
+    margin: auto;
+}
+
+.uploadButton {
+    border: 2px solid black;
+    margin: 8px auto;
+    padding: 20px;
+    border-radius: 30px;
+}
+
+.uploadButton:hover {
+    color: white;
+    background-color: black;
+    cursor: pointer;
+}
+
+.uploadButton:active {
+    background-color: white;
 }
 </style>

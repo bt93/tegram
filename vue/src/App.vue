@@ -98,6 +98,11 @@ footer {
   height: 2.5rem;            /* Footer height */
 }
 
+textarea,
+input[type="submit"] {
+  margin: auto;
+}
+
 @media screen and (max-width: 730px) {
   main {
       margin: auto;

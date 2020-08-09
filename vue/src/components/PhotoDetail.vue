@@ -1,5 +1,5 @@
 <template>
-  <modal name="detail" :adaptive="true" @before-open="beforeOpen" @closed="closed" :reset="true" minWidth="10000px" height="auto" :scrollable="true">
+  <modal name="detail" :adaptive="true" @before-open="beforeOpen" @closed="closed" :reset="true" height="auto" :scrollable="true">
       <photo-container :photo="photo" />
         <section class="actions">
         <div v-if="photo.caption">{{ photo.caption }}</div>
@@ -13,7 +13,7 @@
             <i @click="clickFavorite" v-if="favorited" class="fas fa-bookmark"></i>
         </span>
         <section class="comments">
-        <p class="comment" v-for="comment in comments" :key="comment">{{comment.userName}}: {{ comment.contents }}</p>
+        <p class="comment" v-for="(comment ,i) in comments" :key="i">{{comment.userName}}: {{ comment.contents }}</p>
         </section>
         <section> 
           <form @submit.prevent="submitComment">

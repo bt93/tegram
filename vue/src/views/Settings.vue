@@ -10,7 +10,7 @@
           </div>
           <div>
               <label for="pfp">Profile Picture: </label>
-              <div @click="uploadPhoto">Upload A Photo</div>
+              <div @click="uploadPhoto" class="uploadButton">Upload A Photo</div>
               <img class="userImg" v-if="user.url" :src="`${$store.state.cloudinaryUrl}w_400,h_400,c_crop,g_face,r_max/w_200${user.url}`" alt="">
           </div>
           <input type="submit">
@@ -85,5 +85,22 @@ form > div {
     width: 200px;
     margin: auto;
     border-radius: 130px;
+}
+
+.uploadButton {
+    border: 2px solid black;
+    margin: 8px auto;
+    padding: 20px;
+    border-radius: 30px;
+}
+
+.uploadButton:hover {
+    color: white;
+    background-color: black;
+    cursor: pointer;
+}
+
+.uploadButton:active {
+    background-color: white;
 }
 </style>

@@ -47,6 +47,7 @@ export default {
     min-width: 300px;
     max-width: 605px;
     border-radius: 15px;
+    padding-bottom: 20px;
 }
 
 #userName {

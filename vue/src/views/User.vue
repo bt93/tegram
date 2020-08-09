@@ -4,9 +4,14 @@
       <error v-else-if="error" />
       <div v-else>
         <h3>{{user.username}}</h3>
-        <img class="userImg" v-if="!user.userPhotoPath" v-bind:src="`${$store.state.cloudinaryUrl}w_400,h_400,c_crop,g_face,r_max/w_200/v1596719353/TE-Gram/kqwltepz7nzuciby6eew.png`" alt="">
-        <img class="userImg" v-else :src="`${$store.state.cloudinaryUrl}w_400,h_400,c_crop,g_face,r_max/w_200${user.userPhotoPath}`" alt="">
-        <p>{{this.user.bio}}</p>
+        <div class="userInfo">
+          <img class="pfp" v-if="!user.userPhotoPath" v-bind:src="`${$store.state.cloudinaryUrl}w_400,h_400,c_crop,g_face,r_max/w_200/v1596719353/TE-Gram/kqwltepz7nzuciby6eew.png`" alt="">
+          <img class="pfp" v-else :src="`${$store.state.cloudinaryUrl}w_400,h_400,c_crop,g_face,r_max/w_200${user.userPhotoPath}`" alt="">
+          <div>
+            <p>Bio: {{this.user.bio}}</p>
+            <p>Posts: {{ photos.length }}</p>
+          </div>
+        </div>
         <photo-container v-for="photo in photos" :key="photo.photoId" :photo="photo"/>
         <h1 v-if="photos.length === 0">Looks Like you don't have any photos yet!</h1>
         <photo-detail />
@@ -87,9 +92,20 @@ export default {
 </script>
 
 <style>
-.userImg {
+.pfp {
     width: 200px;
-    margin: auto;
+    margin: 20px;
     border-radius: 130px;
+}
+
+.userInfo {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.userInfo div {
+  margin-top: 50px;
+  font-size: 20px;
 }
 </style>
