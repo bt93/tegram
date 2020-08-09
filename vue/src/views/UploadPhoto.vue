@@ -40,6 +40,9 @@ export default {
             myWidget.open();
         },
         submitForm() {
+            if (this.uploadPhoto.filePath === '') {
+                alert('Must upload a photo first!')
+            } else {
             photoService.uploadPhoto(this.uploadPhoto)
                         .then(res => {
                             if (res.status === 200) {
@@ -50,6 +53,7 @@ export default {
                             console.log(err)
                             // this.errorMsg = true;
                         })
+            }
         },
     }
 }

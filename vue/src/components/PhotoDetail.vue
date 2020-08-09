@@ -13,7 +13,7 @@
             <i @click="clickFavorite" v-if="favorited" class="fas fa-bookmark"></i>
         </span>
         <section class="comments">
-        <p class="comment" v-for="(comment ,i) in comments" :key="i">{{comment.userName}}: {{ comment.contents }}</p>
+        <p class="comment" v-for="(comment ,i) in comments" :key="i"><router-link :to="{name :'user', params: {id: comment.userId}}">{{comment.userName}}</router-link>: {{ comment.contents }}</p>
         </section>
         <section> 
           <form @submit.prevent="submitComment">

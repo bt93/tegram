@@ -13,7 +13,7 @@
           </div>
         </div>
         <photo-container v-for="photo in photos" :key="photo.photoId" :photo="photo"/>
-        <h1 v-if="photos.length === 0">Looks Like you don't have any photos yet!</h1>
+        <h1 v-if="photos.length === 0">Looks Like this user doesn't have any photos yet!</h1>
         <photo-detail />
         <login-alert />
       </div>
