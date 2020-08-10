@@ -232,7 +232,34 @@ namespace Capstone.DAO
 
 
         }
-        
+        public void DeletePhoto(int photoId)
+        {
+            
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmdFav = new SqlCommand("DELETE FROM favorite_photo where photo_id = @photo_id ", conn);
+                    cmdFav.Parameters.AddWithValue("@photo_id", photoId);
+                    cmdFav.ExecuteNonQuery();
+                    SqlCommand cmdLike= new SqlCommand("DELETE FROM like_photo where photo_id = @photo_id", conn);
+                    cmdLike.Parameters.AddWithValue("@photo_id", photoId);
+                    cmdLike.ExecuteNonQuery();
+                    SqlCommand cmdComment = new SqlCommand("DELETE FROM comments where photo_id = @photo_id", conn);
+                    cmdComment.Parameters.AddWithValue("@photo_id", photoId);
+                    cmdComment.ExecuteNonQuery();
+                    SqlCommand cmdPhoto = new SqlCommand("DELETE FROM photos where photo_id = @photo_id", conn);
+                    cmdPhoto.Parameters.AddWithValue("@photo_id", photoId);
+                    cmdPhoto.ExecuteNonQuery();
+                }
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+        }
+
 
     }
 }
