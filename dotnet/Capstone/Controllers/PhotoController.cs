@@ -70,6 +70,14 @@ namespace Capstone.Controllers
             photoDAO.UploadPhoto(uploadedPhoto);
             return Ok();
         }
+        [HttpDelete("{photoId}")]
+        [Authorize]
+        public IActionResult DeletePhoto(int photoId)
+        {
+            photoDAO.DeletePhoto(photoId);
+            return Ok();
+
+        }
 
 
 
