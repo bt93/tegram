@@ -8,6 +8,7 @@ import User from '../views/User'
 import Settings from '../views/Settings'
 import UploadPhoto from '../views/UploadPhoto'
 import Favorites from '../views/Favorites'
+import ChangeUserPass from '../views/ChangeUserPass'
 import store from '../store/index'
 
 Vue.use(Router)
@@ -95,6 +96,15 @@ const router = new Router({
       meta: {
         requiresAuth: true,
         title: 'Favorites'
+      }
+    },
+    {
+      path: '/settings/user',
+      name: 'userPass',
+      component: ChangeUserPass,
+      meta: {
+        requiresAuth: true,
+        title: 'User'
       }
     }
   ]

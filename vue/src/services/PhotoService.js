@@ -54,5 +54,9 @@ export default {
 
     unlikePhoto(photoId) {
         return axios.delete(`/like/${photoId}`);
+    },
+
+    deletePhoto(photoId) {
+        return axios.delete(`/photo/${photoId}`);
     }
 }

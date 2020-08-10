@@ -1,5 +1,8 @@
 <template>
   <modal name="detail" :adaptive="true" @before-open="beforeOpen" @closed="closed" :reset="true" height="auto" :scrollable="true">
+      <section v-if="$store.state.token != ''" class="delete">
+        <p v-if="photo.userID === $store.state.user.userId" @click="deletePhoto">❌ Delete</p>
+      </section>
       <section>
         <img src="../images/loading.gif" alt="Loading" v-if="isLoading" class="loading">
         <img v-bind:src="`${$store.state.cloudinaryUrl}c_fit,w_600${photo.filePath}`" alt="{ photo.userName }" @load="onImgLoad">
@@ -57,45 +60,56 @@ export default {
     onImgLoad() {
       this.isLoading = false;
     },
-      submitComment() {
-        if (this.$store.state.token === '') {
-          this.$modal.show('alert');
-        } else {
-          let comment = {
-            photoId: this.photo.photoId,
-            contents: this.newComment,
-            userName: this.$store.state.user.username
+    deletePhoto() {
+      photoService.deletePhoto(this.photo.photoId)
+        .then(res => {
+          if (res === 200) {
+            this.$router.push('/')
           }
-          photoService.addComment(comment)
-            .then(res => {
-              if (res.status === 200) {
-                this.comments.push(comment)
-                this.newComment = '';
-              }
-            })
-            .catch(err => {
-              console.log(err);
-            })
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    },
+    submitComment() {
+      if (this.$store.state.token === '') {
+        this.$modal.show('alert');
+      } else {
+        let comment = {
+          photoId: this.photo.photoId,
+          contents: this.newComment,
+          userName: this.$store.state.user.username
+        }
+        photoService.addComment(comment)
+          .then(res => {
+            if (res.status === 200) {
+              this.comments.push(comment)
+              this.newComment = '';
+            }
+          })
+          .catch(err => {
+            console.log(err);
+          })
         }
       },
-       beforeOpen (event) {
-        this.photo = event.params.photo
-        if (this.$store.state.token !== '') {
-            photoService.getLikeState(this.photo.photoId)
-                .then(res => {
-                    this.liked = res.data;
-                });
+      beforeOpen (event) {
+      this.photo = event.params.photo
+      if (this.$store.state.token !== '') {
+        photoService.getLikeState(this.photo.photoId)
+            .then(res => {
+                this.liked = res.data;
+            });
 
-            photoService.getPhotoFavoriteState(this.photo.photoId)
-                .then(res => {
-                    this.favorited = res.data;
-                })
+        photoService.getPhotoFavoriteState(this.photo.photoId)
+            .then(res => {
+                this.favorited = res.data;
+            })
         }
 
         photoService.getDetailPhoto(this.photo.photoId) 
-              .then(res => {
-                res.data.comments.forEach(c => this.comments.push(c));
-              })
+            .then(res => {
+              res.data.comments.forEach(c => this.comments.push(c));
+            })
       },
       clickLike() {
             if (this.liked && this.$store.state.token != '') {
@@ -155,8 +169,13 @@ export default {
     color: red;
 }
 
-.icon > i {
+.icon > i,
+.delete {
     cursor: pointer;
+}
+
+.delete {
+  text-align: center;
 }
 
 .actions,

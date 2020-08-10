@@ -2,6 +2,7 @@
   <div class="settings">
       <h1 class="title">TEGram</h1>
       <h2>Settings</h2>
+      <router-link :to="{name: 'userPass'}">Change Password and Username</router-link>
       <form @submit.prevent="submitForm">
           <div>
               <error v-if="errorMsg"/>
