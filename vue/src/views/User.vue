@@ -105,7 +105,7 @@ export default {
     border: 1px solid rgba(219,219,219);
     text-align: left;
     min-width: 300px;
-    max-width: 605px;
+    max-width: 500px;
     border-radius: 15px;
     padding-bottom: 20px;
 }
@@ -125,5 +125,23 @@ export default {
 .userInfo div {
   margin-top: 50px;
   font-size: 20px;
+}
+
+@media screen and (max-width: 1425px) {
+  .photoContainer {
+    max-width: 300px;
+  }
+}
+
+@media screen and (max-width: 1145px) {
+  .photoContainer {
+    max-width: 100px;
+  }
+}
+
+@media screen and (max-width: 925px) {
+  .photoContainer {
+    max-width: 60px;
+  }
 }
 </style>
