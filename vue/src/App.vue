@@ -1,14 +1,14 @@
 <template>
   <div id="app">
-    <nav id="nav" v-if="$route.name !== 'login' || $route.name !== 'register'">
-      <span><router-link v-bind:to="{ name: 'home' }"><i class="fas fa-home"></i></router-link></span>
-      <span v-if="$store.state.token === ''"> | <router-link v-bind:to="{ name: 'login' }"><i class="fas fa-sign-in-alt"></i></router-link>|</span>
+    <nav id="nav">
+      <span><router-link v-bind:to="{ name: 'home' }"><i title="Home" class="fas fa-home"></i></router-link></span>
+      <span v-if="$store.state.token === ''"> | <router-link v-bind:to="{ name: 'login' }"><i title="Login" class="fas fa-sign-in-alt"></i></router-link></span>
       <span v-if="$store.state.token === ''"> | <router-link v-bind:to="{ name: 'register' }">Register</router-link></span>
-      <span v-if="$store.state.token != ''"> | <router-link v-bind:to="{ name: 'user', params: {id: $store.state.user.userId}}"><i class="fas fa-user"></i></router-link></span>
-      <span v-if="$store.state.token != ''"> | <router-link v-bind:to="{name: 'settings'}"><i class="fas fa-cog"></i></router-link></span>
-      <span v-if="$store.state.token != ''"> | <router-link v-bind:to="{name: 'favorites'}"><i class="fas fa-bookmark"></i></router-link></span>
-      <span v-if="$store.state.token != ''"> | <router-link v-bind:to="{name: 'upload'}"><i class="fas fa-camera"></i></router-link></span>
-      <span v-if="$store.state.token != ''"> | <router-link v-bind:to="{ name: 'logout' }"><i class="fas fa-sign-out-alt"></i></router-link></span>
+      <span v-if="$store.state.token != ''"> | <router-link v-bind:to="{ name: 'user', params: {id: $store.state.user.userId}}"><i title="My Page" class="fas fa-user"></i></router-link></span>
+      <span v-if="$store.state.token != ''"> | <router-link v-bind:to="{name: 'settings'}"><i title="Settings" class="fas fa-cog"></i></router-link></span>
+      <span v-if="$store.state.token != ''"> | <router-link v-bind:to="{name: 'favorites'}"><i title="Favorites" class="fas fa-bookmark"></i></router-link></span>
+      <span v-if="$store.state.token != ''"> | <router-link v-bind:to="{name: 'upload'}"><i title="Upload Photo" class="fas fa-camera"></i></router-link></span>
+      <span v-if="$store.state.token != ''"> | <router-link v-bind:to="{ name: 'logout' }"><i title="Logout" class="fas fa-sign-out-alt"></i></router-link></span>
     </nav>
     <main>
       <h2  v-if="$store.state.token != ''">Welcome, {{$store.state.user.username.charAt(0).toUpperCase() + $store.state.user.username.slice(1)}}!</h2>
