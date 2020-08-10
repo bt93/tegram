@@ -48,3 +48,15 @@ export default {
   }
 };
 </script>
+<style scoped>
+.photoContainer {
+    margin: 0 auto 20px auto;
+    background-color: rgba(255,255,255);
+    border: 1px solid rgba(219,219,219);
+    text-align: left;
+    min-width: 300px;
+    max-width: 605px;
+    border-radius: 15px;
+    padding-bottom: 20px;
+}
+</style>

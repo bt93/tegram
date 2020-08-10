@@ -5,14 +5,13 @@
         <p v-else id="userName">{{photo.userName}}</p>
     </header>
     <section>
-        <img v-bind:src="`${$store.state.cloudinaryUrl}c_scale,w_2498${photo.filePath}`" alt="" @click="show">
+        <img v-bind:src="`${$store.state.cloudinaryUrl}c_fill,h_3000,w_3000${photo.filePath}`" alt="" @click="show">
+        <div class="caption" v-if="photo.caption">{{ photo.caption }}</div>
     </section>
       
   </div>
 </template>
 <script>
-// import photoService from '../services/PhotoService'
-
 export default {
     name: 'photo-container',
     data() {
@@ -39,18 +38,10 @@ export default {
 </script>
 
 <style scoped>
-.photoContainer {
-    margin: 0 auto 20px auto;
-    background-color: rgba(255,255,255);
-    border: 1px solid rgba(219,219,219);
-    text-align: left;
-    min-width: 300px;
-    max-width: 605px;
-    border-radius: 15px;
-    padding-bottom: 20px;
-}
 
-#userName {
+
+#userName,
+.caption {
     padding-left: 10px;
 }
 

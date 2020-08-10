@@ -1,8 +1,11 @@
 <template>
   <modal name="detail" :adaptive="true" @before-open="beforeOpen" @closed="closed" :reset="true" height="auto" :scrollable="true">
-      <photo-container :photo="photo" />
+      <section>
+        <img src="../images/loading.gif" alt="Loading" v-if="isLoading" class="loading">
+        <img v-bind:src="`${$store.state.cloudinaryUrl}c_fit,w_600${photo.filePath}`" alt="{ photo.userName }" @load="onImgLoad">
+      </section>
+        <div class="caption" v-if="photo.caption">{{ photo.userName }} - {{ photo.caption }}</div>
         <section class="actions">
-        <div v-if="photo.caption">{{ photo.caption }}</div>
         <span class="icon">
             <i @click.stop="clickLike()" v-if="!liked" class="heart far fa-heart"></i>
             <i @click.stop="clickLike()" v-if="liked" class="heart fas fa-heart"></i>
@@ -27,13 +30,13 @@
 </template>
 
 <script>
-import PhotoContainer from './PhotoContainer'
+// import PhotoContainer from './PhotoContainer'
 import photoService from '../services/PhotoService'
 
 export default {
     name: 'photo-detail',
     components: {
-       PhotoContainer
+      //  PhotoContainer
     },
     data() {
       return {
@@ -41,13 +44,18 @@ export default {
         liked: false,
         favorited: false,
         comments: [],
-        newComment: ''
+        newComment: '',
+        isLoading: true
       }
     },
     methods: {
     closed() {
       this.comments = [];
       this.newComment = '';
+      this.isLoading = true;
+    },
+    onImgLoad() {
+      this.isLoading = false;
     },
       submitComment() {
         if (this.$store.state.token === '') {
@@ -133,7 +141,7 @@ export default {
                 this.$modal.show('alert');
             }
         },
-    }
+    },
 }
 </script>
 
@@ -155,5 +163,9 @@ export default {
 .comments {
     padding-left: 10px;
     padding-right: 10px;
+}
+
+.loading {
+    padding: 26%;
 }
 </style>

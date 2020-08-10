@@ -12,7 +12,9 @@
             <p>Posts: {{ photos.length }}</p>
           </div>
         </div>
-        <photo-container v-for="photo in photos" :key="photo.photoId" :photo="photo"/>
+        <div class="userPhotos">
+          <photo-container class="flex-photo" v-for="photo in photos" :key="photo.photoId" :photo="photo"/>
+        </div>
         <h1 v-if="photos.length === 0">Looks Like this user doesn't have any photos yet!</h1>
         <photo-detail />
         <login-alert />
@@ -41,8 +43,7 @@ export default {
       photos: [],
       error: false,
       isLoading: true,
-      user: {
-      }
+      user: {}
     }
   },
   watch: {
@@ -92,6 +93,23 @@ export default {
 </script>
 
 <style>
+.userPhotos {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.photoContainer {
+    margin: 0 auto 20px auto;
+    background-color: rgba(255,255,255);
+    border: 1px solid rgba(219,219,219);
+    text-align: left;
+    min-width: 300px;
+    max-width: 605px;
+    border-radius: 15px;
+    padding-bottom: 20px;
+}
+
 .pfp {
     width: 200px;
     margin: 20px;
