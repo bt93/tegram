@@ -9,5 +9,7 @@ namespace Capstone.DAO
         User AddUser(string username, string password, string role);
         void AddUserInfo(int userId, string bio, string path);
         GeneralUser GetUserInfo(int id);
+        User ChangeUserPassword(int userId, string password, string username);
+
     }
 }

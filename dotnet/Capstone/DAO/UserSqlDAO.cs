@@ -123,7 +123,7 @@ namespace Capstone.DAO
 
                     SqlDataReader reader = cmd.ExecuteReader();
 
-                    while(reader.Read())
+                    while (reader.Read())
                     {
                         user.UserId = Convert.ToInt32(reader["user_id"]);
                         user.Username = Convert.ToString(reader["username"]);
@@ -133,7 +133,7 @@ namespace Capstone.DAO
 
                     }
                 }
-                               
+
             }
             catch (SqlException)
             {
@@ -141,6 +141,35 @@ namespace Capstone.DAO
             }
 
             return user;
+        }
+
+
+
+
+        public User ChangeUserPassword(int userId, string password, string username)
+        {
+            IPasswordHasher passwordHasher = new PasswordHasher();
+            PasswordHash hash = passwordHasher.ComputeHash(password);
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand("UPDATE users SET users.password_hash = @passwordHash, users.salt = @salt where users.user_id = @userId", conn);
+                    cmd.Parameters.AddWithValue("@passwordHash", hash.Password);
+                    cmd.Parameters.AddWithValue("@userId", userId);
+                    cmd.Parameters.AddWithValue("@salt", hash.Salt);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+
+            return GetUser(username);
         }
     }
 }

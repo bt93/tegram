@@ -101,5 +101,25 @@ namespace Capstone.Controllers
             GeneralUser user = userDAO.GetUserInfo(id);
             return Ok(user);
         }
+
+
+
+        [HttpPut("update")]
+        public IActionResult ChangeUserPassword(UpdateUser userParam)
+        {
+            IActionResult result;
+
+            User user = userDAO.ChangeUserPassword(userParam.UserId, userParam.Password, userParam.Username);
+            if (user != null)
+            {
+                result = Created(user.Username, null); //values aren't read on client
+            }
+            else
+            {
+                result = BadRequest(new { message = "An error occurred and user was not created." });
+            }
+
+            return result;
+        }
     }
 }

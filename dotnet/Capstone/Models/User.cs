@@ -61,4 +61,12 @@
         public string Bio { get; set; }
         public string UserPhotoPath { get; set; }
     }
+
+    public class UpdateUser
+    {
+        public int UserId { get; set; }
+        public string Username { get; set; }
+        public string Password { get; set; }
+        public string ConfirmPassword { get; set; }
+    }
 }
