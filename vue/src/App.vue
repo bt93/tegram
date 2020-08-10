@@ -50,6 +50,7 @@ main {
 
 a {
   text-decoration: none;
+  color: #12A3D8;
 }
 
 .header {
