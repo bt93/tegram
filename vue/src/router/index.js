@@ -9,6 +9,7 @@ import Settings from '../views/Settings'
 import UploadPhoto from '../views/UploadPhoto'
 import Favorites from '../views/Favorites'
 import ChangeUserPass from '../views/ChangeUserPass'
+import DeleteUser from '../views/DeleteUser'
 import store from '../store/index'
 
 Vue.use(Router)
@@ -105,6 +106,15 @@ const router = new Router({
       meta: {
         requiresAuth: true,
         title: 'User'
+      }
+    },
+    {
+      path: '/settings/user/delete',
+      name: 'deleteUser',
+      component: DeleteUser,
+      meta: {
+        requiresAuth: true,
+        title: 'Delete'
       }
     }
   ]

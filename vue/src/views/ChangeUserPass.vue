@@ -1,7 +1,8 @@
 <template>
   <div>
-      <router-link :to="{name: 'settings'}">Back</router-link>
-      <form @submit.prevent="changeUserNamePass">
+      <div><router-link :to="{name: 'settings'}">Back</router-link></div>
+      <div><router-link :to="{name: 'deleteUser'}">Delete User</router-link></div>
+      <form class="userPass" @submit.prevent="changeUserNamePass">
           <label for="userName">User Name: </label>
           <input type="text" name="userName" id="userName" v-model="user.userName">
           <label for="pass">Password: </label>
@@ -54,7 +55,7 @@ export default {
 </script>
 
 <style>
-form {
+.userPass {
     display: flex;
     flex-direction: column;
     margin: auto;

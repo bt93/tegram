@@ -24,6 +24,10 @@ export default {
       password: user.password,
       username: user.userName
     })
+  },
+
+  deleteUser() {
+    return axios.delete('/login/delete');
   }
 
 }
