@@ -232,34 +232,31 @@ namespace Capstone.DAO
 
 
         }
-        public void DeletePhoto(int photoId)
+        public void DeletePhoto(int photoId, int userId)
         {
-            
-            try
+            Photo photo = GetDetailPhoto(photoId);
+            if (userId == photo.UserID)
             {
-                using (SqlConnection conn = new SqlConnection(connectionString))
+                try
                 {
-                    conn.Open();
-                    SqlCommand cmdFav = new SqlCommand("DELETE FROM favorite_photo where photo_id = @photo_id ", conn);
-                    cmdFav.Parameters.AddWithValue("@photo_id", photoId);
-                    cmdFav.ExecuteNonQuery();
-                    SqlCommand cmdLike= new SqlCommand("DELETE FROM like_photo where photo_id = @photo_id", conn);
-                    cmdLike.Parameters.AddWithValue("@photo_id", photoId);
-                    cmdLike.ExecuteNonQuery();
-                    SqlCommand cmdComment = new SqlCommand("DELETE FROM comments where photo_id = @photo_id", conn);
-                    cmdComment.Parameters.AddWithValue("@photo_id", photoId);
-                    cmdComment.ExecuteNonQuery();
-                    SqlCommand cmdPhoto = new SqlCommand("DELETE FROM photos where photo_id = @photo_id", conn);
-                    cmdPhoto.Parameters.AddWithValue("@photo_id", photoId);
-                    cmdPhoto.ExecuteNonQuery();
+
+                    //deletePhoto includes four sql delete statements that removes from like_photo ,favorite_photo ,comments and photos
+                    using (SqlConnection conn = new SqlConnection(connectionString))
+                    {
+                        conn.Open();
+                        SqlCommand cmdFav = new SqlCommand("EXEC deletePhoto @photo_id = @photoId", conn);
+                        cmdFav.Parameters.AddWithValue("@photoId", photoId);
+                        cmdFav.ExecuteNonQuery();
+
+                    }
+                }
+                catch (SqlException)
+                {
+                    throw;
                 }
             }
-            catch (SqlException)
-            {
-                throw;
-            }
+            
         }
-
 
     }
 }
