@@ -5,6 +5,7 @@
     <photo-container v-else v-for="photo in photos" :key="photo.photoId" :photo="photo"/>
     <photo-detail />
     <login-alert />
+    <delete-modal />
   </div>
 </template>
 
@@ -14,6 +15,7 @@ import photoService from '../services/PhotoService'
 import Error from '../components/Error'
 import PhotoDetail from '../components/PhotoDetail'
 import LoginAlert from '../components/LoginAlert'
+import DeleteModal from '../components/DeleteModal'
 
 export default {
   name: "home",
@@ -21,6 +23,7 @@ export default {
     PhotoContainer,
     PhotoDetail,
     LoginAlert,
+    DeleteModal,
     Error
   },
   data() {

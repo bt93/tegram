@@ -1,11 +1,17 @@
 <template>
   <modal name="alert" :adaptive="true">
-      <h3>You must login to like or favorite a photo!</h3>
-      <button @click="goToLogin">Login</button>
-      <button @click="goToRegister">Register</button>
-      <button @click="$modal.hide('alert')">
-        ❌
-      </button>
+      <div class="alert">
+            <h3>
+                You must login to like, favorite, or comment on a photo!
+                <span>
+                    <button @click="$modal.hide('alert')">
+                    ❌
+                    </button>
+                </span>
+            </h3>
+            <button @click="goToLogin">Login</button>
+            <button @click="goToRegister">Register</button>
+      </div>
   </modal>
 </template>
 
@@ -24,5 +30,7 @@ export default {
 </script>
 
 <style>
-
+.alert {
+    text-align: center;
+}
 </style>

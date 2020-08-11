@@ -18,6 +18,7 @@
         <h1 v-if="photos.length === 0">Looks Like this user doesn't have any photos yet!</h1>
         <photo-detail />
         <login-alert />
+        <delete-modal />
       </div>
   </div>
 </template>
@@ -29,13 +30,15 @@ import PhotoDetail from '../components/PhotoDetail'
 import LoginAlert from '../components/LoginAlert'
 import authService from '../services/AuthService'
 import Error from '../components/Error'
+import DeleteModal from '../components/DeleteModal'
 
 export default {
   components: {
     PhotoContainer,
     PhotoDetail,
     LoginAlert,
-    Error
+    Error,
+    DeleteModal
   },
   data() {
     return {
@@ -104,8 +107,7 @@ export default {
     background-color: rgba(255,255,255);
     border: 1px solid rgba(219,219,219);
     text-align: left;
-    min-width: 300px;
-    max-width: 500px;
+    max-width: 245px;
     border-radius: 15px;
     padding-bottom: 20px;
 }
@@ -135,6 +137,7 @@ export default {
 
 @media screen and (max-width: 1145px) {
   .photoContainer {
+    min-width: 300px;
     max-width: 100px;
   }
 }
