@@ -123,13 +123,12 @@ namespace Capstone.Controllers
         }
 
 
-        [HttpDelete("{userId}")]
+        [HttpDelete("/delete")]
         [Authorize]
-        public IActionResult DeleteUser(int userId)
-        {
-            userDAO.DeleteUser(userId);
+        public IActionResult DeleteUser()
+        {           
+            userDAO.DeleteUser(UserId);
             return Ok();
-
         }
     }
 }

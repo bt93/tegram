@@ -61,15 +61,7 @@ export default {
       this.isLoading = false;
     },
     deletePhoto() {
-      photoService.deletePhoto(this.photo.photoId)
-        .then(res => {
-          if (res === 200) {
-            this.$router.push('/')
-          }
-        })
-        .catch(err => {
-          console.log(err);
-        });
+      this.$modal.show('deletePhoto', {photoId: this.photo.photoId});
     },
     submitComment() {
       if (this.$store.state.token === '') {
