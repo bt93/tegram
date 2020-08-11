@@ -171,5 +171,36 @@ namespace Capstone.DAO
 
             return GetUser(username);
         }
+
+        public void DeleteUser(int userId)
+        {
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmdFav = new SqlCommand("DELETE FROM favorite_photo where user_id = @user_id ", conn);
+                    cmdFav.Parameters.AddWithValue("@user_id", userId);
+                    cmdFav.ExecuteNonQuery();
+                    SqlCommand cmdLike = new SqlCommand("DELETE FROM like_photo where user_id = @user_id", conn);
+                    cmdLike.Parameters.AddWithValue("@user_id", userId);
+                    cmdLike.ExecuteNonQuery();
+                    SqlCommand cmdComment = new SqlCommand("DELETE FROM comments where user_id = @user_id", conn);
+                    cmdComment.Parameters.AddWithValue("@user_id", userId);
+                    cmdComment.ExecuteNonQuery();
+                    SqlCommand cmdPhoto = new SqlCommand("DELETE FROM photos where user_id = @user_id", conn);
+                    cmdPhoto.Parameters.AddWithValue("@user_id", userId);
+                    cmdPhoto.ExecuteNonQuery();
+                    SqlCommand cmdUser = new SqlCommand("DELETE FROM users where user_id = @user_id", conn);
+                    cmdUser.Parameters.AddWithValue("@user_id", userId);
+                    cmdUser.ExecuteNonQuery();
+                }
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+        }
     }
 }
