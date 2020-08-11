@@ -107,6 +107,7 @@ input[type="submit"] {
 input[type="submit"] {
   margin-top: 20px;
   padding: 10px 30px;
+  z-index: 2000;
 }
 
 @media screen and (max-width: 730px) {
