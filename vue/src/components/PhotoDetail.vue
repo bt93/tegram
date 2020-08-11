@@ -77,16 +77,19 @@ export default {
           contents: this.newComment,
           userName: this.$store.state.user.username
         }
-        photoService.addComment(comment)
-          .then(res => {
-            if (res.status === 200) {
-              this.comments.push(comment)
-              this.newComment = '';
-            }
-          })
-          .catch(err => {
-            console.log(err);
-          })
+
+        if (comment.contents !== '') {
+          photoService.addComment(comment)
+            .then(res => {
+              if (res.status === 200) {
+                this.comments.push(comment)
+                this.newComment = '';
+              }
+            })
+            .catch(err => {
+              console.log(err);
+            })
+          }
         }
       },
       beforeOpen (event) {

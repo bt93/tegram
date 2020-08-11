@@ -104,6 +104,11 @@ input[type="submit"] {
   margin: auto;
 }
 
+input[type="submit"] {
+  margin-top: 20px;
+  padding: 10px 30px;
+}
+
 @media screen and (max-width: 730px) {
   main {
       margin: auto;
