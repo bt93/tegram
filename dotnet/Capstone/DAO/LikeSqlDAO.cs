@@ -19,23 +19,29 @@ namespace Capstone.DAO
         public void LikePhoto(int userId, int photoId)
         {
 
-            try
+            bool likeExists = GetLikeState(userId, photoId);
+
+            if (!likeExists)
             {
-                using (SqlConnection conn = new SqlConnection(connectionString))
+
+                try
                 {
-                    conn.Open();
+                    using (SqlConnection conn = new SqlConnection(connectionString))
+                    {
+                        conn.Open();
 
-                    SqlCommand cmd = new SqlCommand("INSERT INTO like_photo (user_id, photo_id) VALUES (@user_id, @photo_id);", conn);
-                    cmd.Parameters.AddWithValue("@user_id", userId);
-                    cmd.Parameters.AddWithValue("@photo_id", photoId);
-                    cmd.ExecuteNonQuery();
+                        SqlCommand cmd = new SqlCommand("INSERT INTO like_photo (user_id, photo_id) VALUES (@user_id, @photo_id);", conn);
+                        cmd.Parameters.AddWithValue("@user_id", userId);
+                        cmd.Parameters.AddWithValue("@photo_id", photoId);
+                        cmd.ExecuteNonQuery();
 
-                    
+
+                    }
                 }
-            }
-            catch (SqlException)
-            {
-                throw;
+                catch (SqlException)
+                {
+                    throw;
+                }
             }
 
         }
