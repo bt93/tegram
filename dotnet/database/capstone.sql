@@ -138,7 +138,19 @@ INSERT INTO favorite_photo (user_id, photo_id) VALUES (6, 7);
 INSERT INTO favorite_photo (user_id, photo_id) VALUES (6, 3);
 INSERT INTO favorite_photo (user_id, photo_id) VALUES (6, 4);
 
+--Create a stored procedure to delete photos
+GO
 
+CREATE PROCEDURE deletePhoto 
+@photo_id int 
+AS
+BEGIN TRANSACTION
+DELETE FROM favorite_photo where photo_id = @photo_id
+DELETE FROM like_photo where photo_id = @photo_id
+DELETE FROM comments where photo_id = @photo_id
+DELETE FROM photos where photo_id = @photo_id
+SELECT * from photos
+COMMIT TRANSACTION;
 
 GO
 
