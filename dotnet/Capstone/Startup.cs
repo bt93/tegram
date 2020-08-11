@@ -35,7 +35,7 @@ namespace Capstone
                     });
             });
 
-            string connectionString = Configuration.GetConnectionString("Project");
+            string connectionString = Configuration.GetConnectionString("DefaultConnection");
 
             // configure jwt authentication
             var key = Encoding.ASCII.GetBytes(Configuration["JwtSecret"]);

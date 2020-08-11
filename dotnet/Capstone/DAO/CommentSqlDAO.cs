@@ -18,6 +18,11 @@ namespace Capstone.DAO
 
         public void AddComment(int userId, int photoId, string contents)
         {
+
+            if (contents != "")
+            {
+
+            
             try
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
@@ -38,6 +43,7 @@ namespace Capstone.DAO
                 throw;
             }
 
+            }
         }
 
     }
