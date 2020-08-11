@@ -50,24 +50,8 @@ export default {
     }
   },
   watch: {
-    '$route.params.id': function(userId) {
-      this.photos = [];
-      photoService.getPhotosByUser(userId)
-      .then(res => {
-        if (res.status === 200) {
-          this.isLoading = false;
-          if (res.data.length === 0) {
-            this.error = true
-          } else {
-            res.data.forEach(p => this.photos.push(p));
-          }
-        }
-      }).catch(err => {
-        if (err) {
-          this.isLoading = false;
-          this.error = true;
-        }
-      });
+    '$route.params.id': function() {
+      window.location.reload();
     }
   },
   created() {
