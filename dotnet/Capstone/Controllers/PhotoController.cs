@@ -74,7 +74,7 @@ namespace Capstone.Controllers
         [Authorize]
         public IActionResult DeletePhoto(int photoId)
         {
-            photoDAO.DeletePhoto(photoId);
+            photoDAO.DeletePhoto(photoId, UserId);
             return Ok();
 
         }

@@ -10,7 +10,7 @@ namespace Capstone.DAO
         void UploadPhoto(UploadPhoto uploadedPhoto);
         Photo GetDetailPhoto(int photoId);
         List<Photo> GetAuthenticatedUserFavoritePhotos(int UserId);
-        void DeletePhoto(int photoId);
+        void DeletePhoto(int photoId, int userId);
 
     }
 

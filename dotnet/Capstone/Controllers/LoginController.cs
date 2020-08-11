@@ -121,5 +121,15 @@ namespace Capstone.Controllers
 
             return result;
         }
+
+
+        [HttpDelete("{userId}")]
+        [Authorize]
+        public IActionResult DeleteUser(int userId)
+        {
+            userDAO.DeleteUser(userId);
+            return Ok();
+
+        }
     }
 }
