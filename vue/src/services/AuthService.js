@@ -16,6 +16,14 @@ export default {
 
   addUserInfo(user) {
     return axios.put('/login/register/setup', {bio: user.bio, userPhotoPath: user.url});
+  },
+
+  changeUserPassword(user) {
+    return axios.put('/login/update', {
+      userId: user.userId,
+      password: user.password,
+      username: user.userName
+    })
   }
 
 }
