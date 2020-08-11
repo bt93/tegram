@@ -32,10 +32,10 @@ export default {
 </script>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:ital,wght@0,300;0,500;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:wght@100;300;400;500&display=swap');
 
 body {
-  font-family: 'Roboto', Arial, sans-serif;
+  font-family: 'Roboto', Helvetica, Arial, sans-serif;
   background: rgba(250,250,250);
   position: relative;
   min-height: 100vh;
@@ -104,9 +104,23 @@ input[type="submit"] {
   margin: auto;
 }
 
+input[type="submit"] {
+  margin-top: 20px;
+  padding: 10px 30px;
+}
+
 @media screen and (max-width: 730px) {
   main {
       margin: auto;
+      padding: 0;
+  }
+
+  .text-center {
+    min-width: 250px;
+  }
+
+  .header {
+    padding-top: 30px;
   }
 }
 

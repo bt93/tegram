@@ -1,5 +1,5 @@
 <template>
-  <modal name="detail" :adaptive="true" @before-open="beforeOpen" @closed="closed" :reset="true" height="auto" :scrollable="true">
+  <modal name="detail" :adaptive="true" @before-open="beforeOpen" @closed="closed" :reset="true" height="auto" :scrollable="true" :maxWidth="1000">
       <section v-if="$store.state.token != ''" class="delete">
         <p v-if="photo.userID === $store.state.user.userId" @click="deletePhoto">❌ Delete</p>
       </section>
@@ -17,6 +17,11 @@
         <span class="icon">
             <i @click="clickFavorite" v-if="!favorited" class="far fa-bookmark"></i>
             <i @click="clickFavorite" v-if="favorited" class="fas fa-bookmark"></i>
+        </span>
+        <span class="exitButton">
+          <button @click="$modal.hide('detail')">
+                    ❌
+          </button>
         </span>
         <section class="comments">
         <p class="comment" v-for="(comment ,i) in comments" :key="i"><router-link :to="{name :'user', params: {id: comment.userId}}">{{comment.userName}}</router-link>: {{ comment.contents }}</p>
@@ -72,16 +77,19 @@ export default {
           contents: this.newComment,
           userName: this.$store.state.user.username
         }
-        photoService.addComment(comment)
-          .then(res => {
-            if (res.status === 200) {
-              this.comments.push(comment)
-              this.newComment = '';
-            }
-          })
-          .catch(err => {
-            console.log(err);
-          })
+
+        if (comment.contents !== '') {
+          photoService.addComment(comment)
+            .then(res => {
+              if (res.status === 200) {
+                this.comments.push(comment)
+                this.newComment = '';
+              }
+            })
+            .catch(err => {
+              console.log(err);
+            })
+          }
         }
       },
       beforeOpen (event) {
@@ -179,5 +187,15 @@ export default {
 
 .loading {
     padding: 26%;
+}
+
+.exitButton {
+  display: none;
+}
+
+@media screen and (max-width: 490px) {
+  .exitButton {
+    display: inline;
+  }
 }
 </style>
