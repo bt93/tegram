@@ -149,8 +149,25 @@ DELETE FROM favorite_photo where photo_id = @photo_id
 DELETE FROM like_photo where photo_id = @photo_id
 DELETE FROM comments where photo_id = @photo_id
 DELETE FROM photos where photo_id = @photo_id
-SELECT * from photos
 COMMIT TRANSACTION;
+
+GO
+
+
+--Create a stored procedure to Delete User
+GO
+
+CREATE PROCEDURE deleteUser
+@user_id int 
+AS
+BEGIN TRANSACTION
+--Select * from photos where user_id = 1
+--for each entry that matches above, we need to delete the photo
+DELETE FROM favorite_photo where user_id = @user_id
+DELETE FROM like_photo where user_id = @user_id
+DELETE FROM comments where user_id = @user_id
+DELETE FROM users where user_id = @user_id
+Commit TRANSACTION;
 
 GO
 

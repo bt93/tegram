@@ -123,7 +123,7 @@ namespace Capstone.Controllers
         }
 
 
-        [HttpDelete("/delete")]
+        [HttpDelete("delete")]
         [Authorize]
         public IActionResult DeleteUser()
         {           

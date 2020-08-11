@@ -10,10 +10,12 @@ namespace Capstone.DAO
     public class UserSqlDAO : IUserDAO
     {
         private readonly string connectionString;
+        
 
         public UserSqlDAO(string dbConnectionString)
         {
             connectionString = dbConnectionString;
+            IPhotoDAO photoDAO = new PhotoSqlDAO(dbConnectionString);
         }
 
         public User GetUser(string username)
@@ -174,27 +176,37 @@ namespace Capstone.DAO
 
         public void DeleteUser(int userId)
         {
+            List<int> photoIds = new List<int>();
 
-            try
+                try
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
-                    SqlCommand cmdFav = new SqlCommand("DELETE FROM favorite_photo where user_id = @user_id ", conn);
-                    cmdFav.Parameters.AddWithValue("@user_id", userId);
-                    cmdFav.ExecuteNonQuery();
-                    SqlCommand cmdLike = new SqlCommand("DELETE FROM like_photo where user_id = @user_id", conn);
-                    cmdLike.Parameters.AddWithValue("@user_id", userId);
-                    cmdLike.ExecuteNonQuery();
-                    SqlCommand cmdComment = new SqlCommand("DELETE FROM comments where user_id = @user_id", conn);
-                    cmdComment.Parameters.AddWithValue("@user_id", userId);
-                    cmdComment.ExecuteNonQuery();
-                    SqlCommand cmdPhoto = new SqlCommand("DELETE FROM photos where user_id = @user_id", conn);
-                    cmdPhoto.Parameters.AddWithValue("@user_id", userId);
-                    cmdPhoto.ExecuteNonQuery();
-                    SqlCommand cmdUser = new SqlCommand("DELETE FROM users where user_id = @user_id", conn);
-                    cmdUser.Parameters.AddWithValue("@user_id", userId);
-                    cmdUser.ExecuteNonQuery();
+
+                    SqlCommand cmdSelectPhotos = new SqlCommand("SELECT * FROM photos where user_id = @user_ID", conn);
+                    cmdSelectPhotos.Parameters.AddWithValue("@user_id", userId);
+                    SqlDataReader reader = cmdSelectPhotos.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        photoIds.Add(Convert.ToInt32(reader["photo_id"]));
+                    }
+                    reader.Close();
+
+                    // Run deletephoto for each of the ids in the above list
+                    foreach (int id in photoIds)
+                    {
+                        SqlCommand cmdDeletePhoto = new SqlCommand("EXEC deletePhoto @photo_id = @photoId", conn);
+                        cmdDeletePhoto.Parameters.AddWithValue("@photoId", id);
+                        cmdDeletePhoto.ExecuteNonQuery();
+                    }
+
+
+                    SqlCommand cmdDeleteUser = new SqlCommand("EXEC deleteUser @user_id = @userId", conn);
+                    cmdDeleteUser.Parameters.AddWithValue("@userId", userId);
+                    cmdDeleteUser.ExecuteNonQuery();
+
                 }
             }
             catch (SqlException)
