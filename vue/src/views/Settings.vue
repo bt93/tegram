@@ -2,12 +2,13 @@
   <div class="settings">
       <h1 class="title">TEGram</h1>
       <h2>Settings</h2>
-      <router-link :to="{name: 'userPass'}">Change Password and Username</router-link>
+      <router-link :to="{name: 'userPass'}">Change Password</router-link>
       <form @submit.prevent="submitForm">
           <div>
               <error v-if="errorMsg"/>
               <label for="bio">Biography: </label>
               <textarea v-model="user.bio" name="bio" id="bio" cols="30" rows="10"></textarea>
+              <p>Max: 400 Characters</p>
           </div>
           <div>
               <label for="pfp">Profile Picture: </label>

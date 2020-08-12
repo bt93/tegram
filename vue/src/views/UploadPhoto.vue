@@ -3,6 +3,7 @@
       <form @submit.prevent="submitForm">
           <label for="caption">Caption</label>
           <textarea v-model="uploadPhoto.caption" name="caption" id="caption" cols="30" rows="10"></textarea>
+          <p>Max: 400 Characters</p>
           <label for="pfp">Photo: </label>
           <div @click="upload" class="uploadButton">Upload A Photo</div>
           <img class="uploadedPhoto" v-if="uploadPhoto.filePath" :src="`${$store.state.cloudinaryUrl}/c_scale,w_2498/${uploadPhoto.filePath}`" alt="Uploaded Photo">
