@@ -3,8 +3,8 @@
       <div><router-link :to="{name: 'settings'}">Back</router-link></div>
       <div><router-link :to="{name: 'deleteUser'}">Delete User</router-link></div>
       <form class="userPass" @submit.prevent="changeUserNamePass">
-          <label for="userName">User Name: </label>
-          <input type="text" name="userName" id="userName" v-model="user.userName">
+          <!-- <label for="userName">User Name: </label>
+          <input type="text" name="userName" id="userName" v-model="user.userName"> -->
           <label for="pass">Password: </label>
           <input type="password" name="password" id="password" v-model="user.password">
           <input type="submit">

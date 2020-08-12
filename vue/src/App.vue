@@ -13,7 +13,10 @@
     <main>
       <h2  v-if="$store.state.token != ''">Welcome, {{$store.state.user.username.charAt(0).toUpperCase() + $store.state.user.username.slice(1)}}!</h2>
       <div class="header">
-        <span><img src=".\images\TEGram_Smaller_Rounded.png" class="small-logo" alt=""></span><h1 class="title">TEGram</h1>
+        <router-link :to="{name: 'home'}">
+          <span><img src=".\images\TEGram_Smaller_Rounded.png" class="small-logo" alt=""></span>
+        </router-link>
+        <h1 class="title">TEGram</h1>
       </div>
       <router-view />
     </main>
@@ -94,7 +97,7 @@ a {
 
 footer {
   position: absolute;
-  bottom: 0;
+  bottom: -80px;
   width: 100%;
   height: 2.5rem;            /* Footer height */
 }
@@ -108,6 +111,7 @@ input[type="submit"] {
   margin-top: 20px;
   padding: 10px 30px;
   z-index: 2000;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 730px) {

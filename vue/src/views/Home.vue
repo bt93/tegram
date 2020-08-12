@@ -2,7 +2,7 @@
   <div class="home">
     <img src="../images/loading.gif" alt="TEGram" v-if="isLoading">
     <error v-else-if="error"/>
-    <div v-else>
+    <div v-else class="photolist">
       <photo-container v-for="photo in photos" :key="photo.photoId" :photo="photo"/>
       <div class="buttons">
         <button :disabled="pageNum === 1" @click="prevPage">Previous</button> | 
@@ -109,7 +109,12 @@ export default {
     padding-bottom: 20px;
 }
 
-.buttons {
-  z-index: 100000;
+.photolist {
+  margin-bottom: 65px
+}
+
+.buttons > button {
+  z-index: 100;
+  cursor: pointer;
 }
 </style>
