@@ -13,9 +13,9 @@
     <main>
       <h2  v-if="$store.state.token != ''">Welcome, {{$store.state.user.username.charAt(0).toUpperCase() + $store.state.user.username.slice(1)}}!</h2>
       <div class="header">
-        <router-link :to="{name: 'home'}">
-          <span><img src=".\images\TEGram_Smaller_Rounded.png" class="small-logo" alt=""></span>
-        </router-link>
+        <!-- <router-link :to="{name: 'home'}"> -->
+          <span><img src=".\images\TEGram_Smaller_Rounded.png" class="small-logo" alt="TeGram" title="Go Home" @click="goHome"></span>
+        <!-- </router-link> -->
         <h1 class="title">TEGram</h1>
       </div>
       <router-view />
@@ -29,6 +29,15 @@ export default {
   data() {
     return {
       date: new Date()
+    }
+  },
+  methods: {
+    goHome() {
+      if (this.$route.name === 'home') {
+        window.location.reload();
+      } else {
+        this.$router.push('/');
+      }
     }
   }
 }
@@ -85,7 +94,9 @@ a {
 .small-logo {
   max-width: 80px;
   padding-right: 20px;
+  cursor: pointer;
 }
+
 .title {
   font-family: 'Pacifico', cursive;;
 }
