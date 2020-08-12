@@ -11,7 +11,7 @@ namespace Capstone.DAO
         Photo GetDetailPhoto(int photoId);
         List<Photo> GetAuthenticatedUserFavoritePhotos(int UserId);
         void DeletePhoto(int photoId, int userId);
-
+        List<Photo> GetPartitionedPhotos(int pageNumber, int RowsPerPage);
     }
 
 }

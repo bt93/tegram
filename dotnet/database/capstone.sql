@@ -171,5 +171,20 @@ Commit TRANSACTION;
 
 GO
 
+--Create a stored procedure to paginate photos
+CREATE PROCEDURE photosByPage
+@PageNumber INT,
+@RowsPerPage INT
+AS
+BEGIN TRANSACTION
+SELECT file_path, caption, users.user_id, users.username, (SELECT COUNT(*) from like_photo where like_photo.photo_id = photos.photo_id) as number_of_likes, photos.photo_id from photos JOIN users on users.user_id = photos.user_id
+ORDER BY photo_id desc
+OFFSET (@PageNumber -1) * @RowsPerPage ROWS
+FETCH NEXT @RowsPerPage ROWS ONLY
+COMMIT TRANSACTION;
+
+GO
+
+
 
 

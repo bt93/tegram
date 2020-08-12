@@ -257,6 +257,45 @@ namespace Capstone.DAO
             }
             
         }
+        public List<Photo> GetPartitionedPhotos(int pageNumber, int RowsPerPage)
+        {
+            List<Photo> Photos = new List<Photo>();
+            RowsPerPage = 15;
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand("EXEC photosByPage @PageNumber = @Page_Number, @RowsPerPage = @Rows_Per_Page", conn);
+                    cmd.Parameters.AddWithValue("@Page_Number", pageNumber);
+                    cmd.Parameters.AddWithValue("@Rows_Per_Page", RowsPerPage);
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+
+                        string path = (Convert.ToString(reader["file_path"]));
+                        string caption = (Convert.ToString(reader["caption"]));
+                        int id = (Convert.ToInt32(reader["user_id"]));
+                        string username = (Convert.ToString(reader["username"]));
+                        int numberOfLikes = (Convert.ToInt32(reader["number_of_likes"]));
+                        int photoId = (Convert.ToInt32(reader["photo_id"]));
+
+                        Photo thisPhoto = new Photo(path, caption, id, username, numberOfLikes, photoId);
+
+                        Photos.Add(thisPhoto);
+
+                    }
+                }
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+
+            return Photos;
+        }
 
     }
 }
