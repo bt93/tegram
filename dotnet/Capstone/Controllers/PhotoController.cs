@@ -55,6 +55,42 @@ namespace Capstone.Controllers
             return Ok(Photos);
         }
 
+        [HttpGet("page/{number}")]
+        public IActionResult GetPartitionedPhotos(int number)
+        {
+            //get the page number from the route
+            int pageNumber = number; 
+            //Create a list of Photos
+            List<Photo> Photos = new List<Photo>();
+            //Populate that list of photos with the DAO
+            Photos = photoDAO.GetAllPhotos();
+            //Divide photos into sets, (Ultimately 20 photos per page)
+            List<Photo> requestedPhotos = new List<Photo>();
+            int endIndex = pageNumber * 5;
+            int startIndex = endIndex - 5;
+
+            int remainingValue = ((Photos.Count - (pageNumber * 5)) +5);
+
+            //after dividing by the page number
+            //check that the remaining value is or is not greater than 5
+            
+            if (remainingValue < 5)
+            {
+                for (int i = (remainingValue + ((pageNumber-1) * 5)); i <= Photos.Count; i++)
+                {
+                    requestedPhotos.Add(Photos[i-1]);
+                }
+            }
+            else {
+                for (int i = startIndex; i < endIndex; i++)
+                {
+                    requestedPhotos.Add(Photos[i]);
+                }
+            }
+
+            return Ok(requestedPhotos);
+        }
+
         [HttpGet("{user}")]
         public IActionResult GetUserPhotos(int user)
         {
