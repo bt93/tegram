@@ -3,6 +3,7 @@
       <h1 class="title">TEGram</h1>
       <h2>Settings</h2>
       <router-link :to="{name: 'userPass'}">Change Password</router-link>
+      <div><router-link :to="{name: 'deleteUser'}">Delete User</router-link></div>
       <form @submit.prevent="submitForm">
           <div>
               <error v-if="errorMsg"/>

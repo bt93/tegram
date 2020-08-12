@@ -5,9 +5,9 @@
       <span v-if="$store.state.token === ''"> | <router-link v-bind:to="{ name: 'login' }"><i title="Login" class="fas fa-sign-in-alt"></i></router-link></span>
       <span v-if="$store.state.token === ''"> | <router-link v-bind:to="{ name: 'register' }">Register</router-link></span>
       <span v-if="$store.state.token != ''"> | <router-link v-bind:to="{ name: 'user', params: {id: $store.state.user.userId}}"><i title="My Page" class="fas fa-user"></i></router-link></span>
-      <span v-if="$store.state.token != ''"> | <router-link v-bind:to="{name: 'settings'}"><i title="Settings" class="fas fa-cog"></i></router-link></span>
-      <span v-if="$store.state.token != ''"> | <router-link v-bind:to="{name: 'favorites'}"><i title="Favorites" class="fas fa-bookmark"></i></router-link></span>
       <span v-if="$store.state.token != ''"> | <router-link v-bind:to="{name: 'upload'}"><i title="Upload Photo" class="fas fa-camera"></i></router-link></span>
+      <span v-if="$store.state.token != ''"> | <router-link v-bind:to="{name: 'favorites'}"><i title="Favorites" class="fas fa-bookmark"></i></router-link></span>
+      <span v-if="$store.state.token != ''"> | <router-link v-bind:to="{name: 'settings'}"><i title="Settings" class="fas fa-cog"></i></router-link></span>
       <span v-if="$store.state.token != ''"> | <router-link v-bind:to="{ name: 'logout' }"><i title="Logout" class="fas fa-sign-out-alt"></i></router-link></span>
     </nav>
     <main>
@@ -95,6 +95,10 @@ a {
   max-width: 80px;
   padding-right: 20px;
   cursor: pointer;
+}
+
+.router-link-exact-active {
+  color: goldenrod;
 }
 
 .title {
