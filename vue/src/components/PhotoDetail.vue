@@ -1,5 +1,5 @@
 <template>
-  <modal name="detail" :adaptive="true" @before-open="beforeOpen" @closed="closed" :reset="true" height="auto" :scrollable="true" :maxWidth="1000">
+  <modal name="detail" :adaptive="true" @before-open="beforeOpen" @closed="closed" :reset="true" height="auto" :scrollable="true" :resizable="true" :maxWidth="1000">
       <section v-if="$store.state.token != ''" class="delete">
         <p v-if="photo.userID === $store.state.user.userId" @click="deletePhoto">❌ Delete</p>
       </section>

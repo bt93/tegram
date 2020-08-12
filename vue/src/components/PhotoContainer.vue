@@ -5,7 +5,7 @@
         <p v-else id="userName">{{photo.userName}}</p>
     </header>
     <section>
-        <img v-bind:src="`${$store.state.cloudinaryUrl}c_fill,h_3000,w_3000${photo.filePath}`" alt="" @click="show">
+        <img v-bind:src="`${$store.state.cloudinaryUrl}c_fill,h_3000,w_3000${photo.filePath}`" :alt="photo.caption" @click="show">
         <div class="caption" v-if="photo.caption">{{ photo.caption }}</div>
     </section>
       

@@ -5,6 +5,10 @@ export default {
         return axios.get('/photo');
     },
 
+    getPartitionedPhotos(number) {
+        return axios.get(`/photo/page/${number}`);
+    },
+
     getPhotosByUser(userId) {
         return axios.get(`/photo/${userId}`);
     },

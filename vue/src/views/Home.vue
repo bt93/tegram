@@ -2,7 +2,13 @@
   <div class="home">
     <img src="../images/loading.gif" alt="TEGram" v-if="isLoading">
     <error v-else-if="error"/>
-    <photo-container v-else v-for="photo in photos" :key="photo.photoId" :photo="photo"/>
+    <div v-else>
+      <photo-container v-for="photo in photos" :key="photo.photoId" :photo="photo"/>
+      <div class="buttons">
+        <button :disabled="pageNum === 1" @click="prevPage">Previous</button> | 
+        <button :disabled="pageNum >= totalPages" @click="nextPage">Next</button>
+      </div>
+    </div>
     <photo-detail />
     <login-alert />
     <delete-modal />
@@ -30,11 +36,16 @@ export default {
     return {
       photos: [],
       error: false,
-      isLoading: true
+      isLoading: true,
+      pageNum: 1,
+      totalPages: 0
     }
   },
-  created() {
-    photoService.getAllPhotos()
+  methods: {
+    prevPage() {
+      this.photos = [];
+      this.pageNum--;
+      photoService.getPartitionedPhotos(this.pageNum)
       .then(res => {
         if (res.status === 200) {
           res.data.forEach(p => this.photos.push(p));
@@ -43,7 +54,42 @@ export default {
       })
       .catch(err => {
         if (err) {
-          // TODO: Come back to fix this
+          this.isLoading = false;
+          this.error = true;
+        }
+      })
+    },
+    nextPage() {
+      this.photos = [];
+      this.pageNum++;
+      photoService.getPartitionedPhotos(this.pageNum)
+      .then(res => {
+        if (res.status === 200) {
+          res.data.forEach(p => this.photos.push(p));
+          this.isLoading = false;
+        }
+      })
+      .catch(err => {
+        if (err) {
+          this.isLoading = false;
+          this.error = true;
+        }
+      })
+    }
+  },
+  created() {
+    photoService.getAllPhotos()
+      .then(res => this.totalPages = res.data.length / 5)
+
+    photoService.getPartitionedPhotos(this.pageNum)
+      .then(res => {
+        if (res.status === 200) {
+          res.data.forEach(p => this.photos.push(p));
+          this.isLoading = false;
+        }
+      })
+      .catch(err => {
+        if (err) {
           this.isLoading = false;
           this.error = true;
         }
@@ -61,5 +107,9 @@ export default {
     max-width: 605px;
     border-radius: 15px;
     padding-bottom: 20px;
+}
+
+.buttons {
+  z-index: 100000;
 }
 </style>
