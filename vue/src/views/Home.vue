@@ -79,7 +79,7 @@ export default {
   },
   created() {
     photoService.getAllPhotos()
-      .then(res => this.totalPages = res.data.length / 5)
+      .then(res => this.totalPages = res.data.length / 15)
 
     photoService.getPartitionedPhotos(this.pageNum)
       .then(res => {
