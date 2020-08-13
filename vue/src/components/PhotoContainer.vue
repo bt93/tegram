@@ -48,6 +48,7 @@ export default {
 img {
     width: 100%;
     max-height: 970px;
-    padding: -1
+    padding: -1;
+    cursor: pointer;
 }
 </style> 
